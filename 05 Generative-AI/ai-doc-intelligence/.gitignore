@@ -1,0 +1,8 @@
+backend/.env
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+frontend/node_modules/
+frontend/.next/
+
+.DS_Store

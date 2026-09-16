@@ -1,0 +1,88 @@
+# ===============================
+# 🔐 Environment & Secrets
+# ===============================
+.env
+.env.*
+!.env.example
+*.env
+secrets.json
+credentials.json
+*.pem
+*.key
+
+# ===============================
+# 🐍 Python
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+ENV/
+
+# ===============================
+# 📓 Jupyter Notebook
+# ===============================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ===============================
+# 🤖 ML / DL Models & Data (large files)
+# ===============================
+*.pkl
+*.h5
+*.pt
+*.pth
+*.onnx
+*.joblib
+*.sav
+*.ckpt
+*.bin
+
+# Large datasets
+*.csv
+*.zip
+*.tar.gz
+*.parquet
+!requirements.txt
+
+# ===============================
+# 📊 Logs & Caches
+# ===============================
+*.log
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===============================
+# 🖥️ OS Files
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===============================
+# 💻 IDE / Editor
+# ===============================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===============================
+# 📦 Node (if any project has it)
+# ===============================
+node_modules/
+.next/
+dist/
+build/
+npm-debug.log*
+yarn-error.log*

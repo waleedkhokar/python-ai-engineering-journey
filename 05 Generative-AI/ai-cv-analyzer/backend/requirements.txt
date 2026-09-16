@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+google-genai
+pydantic
+pydantic-settings
+sqlalchemy
+psycopg2-binary
+pgvector
+pdfplumber
+python-docx
+python-multipart
