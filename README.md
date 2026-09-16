@@ -124,11 +124,11 @@ My goal is to build a strong foundation and gradually move toward building **pro
 
 | ATS Job Analyzer | AI ChatBot |
 | :---: | :---: |
-| ![Screenshot 0](Python-Foundations/Class1/0.png) | ![Screenshot 1](Python-Foundations/Class1/1.png) |
+| ![Screenshot 0](01%20Python-Foundations/Class1/0.png) | ![Screenshot 1](01%20Python-Foundations/Class1/1.png) |
 
 | VS Code Overview | AI/ML Model |
 | :---: | :---: |
-| ![Screenshot 2](Python-Foundations/Class1/2.png) | ![Screenshot 3](Python-Foundations/Class1/44.png) |
+| ![Screenshot 2](01%20Python-Foundations/Class1/2.png) | ![Screenshot 3](01%20Python-Foundations/Class1/44.png) |
 
 ---
 
