@@ -283,35 +283,3 @@ print(len(a))   # 46 methods
 **⭐ Star this repo if it helps you!**
 
 *"Strings are the backbone of every program. Master them first."*
-```
-
----
-
-## **Push it:**
-
-```bash
-cd "/Users/waleedkhokhar/Documents/DG Skills AI Python/python-complete-journey"
-
-git add "01 Python-Beginner-to-Advanced/Class2/"
-git commit -m "Jan 2, 2024 — Class 2: Strings complete guide"
-git push origin main
-```
-
-**If network fails:** Retry when WiFi works — commit is saved locally.
-
----
-
-## **What this README covers:**
-
-✅ What strings are  
-✅ 46 methods table  
-✅ 3 formatting ways (concatenation, format, f-strings)  
-✅ Whitespace handling  
-✅ Regex cleaning  
-✅ Escape characters  
-✅ Real examples  
-✅ Key takeaways  
-✅ Practice exercises  
-✅ Navigation links
-
-**This is a COMPLETE beginner guide — anyone can learn strings from this!** 🚀
