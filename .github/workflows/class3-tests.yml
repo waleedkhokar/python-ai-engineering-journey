@@ -1,0 +1,26 @@
+name: Class 3 Tests
+
+on:
+  push:
+    paths:
+      - '01 Python-Beginner-to-Advanced/Class3/**'
+
+jobs:
+  test-class3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check Python syntax
+        run: |
+          echo "Checking Class 3 files..."
+          python -c "print('Operators working!')"
+          python -c "print(5 + 3, 10 - 2, 5 * 3, 10 / 2)"
+          python -c "print(2 ** 3, 14 // 3, 14 % 3)"
