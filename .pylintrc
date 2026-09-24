@@ -1,0 +1,11 @@
+[MASTER]
+ignore=CVS,.git,__pycache__,.venv,node_modules
+
+[MESSAGES CONTROL]
+disable=
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    C0103,  # invalid-name
+    W0611,  # unused-import
+    R0801,  # duplicate-code
