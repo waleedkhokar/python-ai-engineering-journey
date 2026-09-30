@@ -120,24 +120,19 @@ More projects will be added as I continue learning.
 My goal is to build a strong foundation and gradually move toward building **production-ready AI systems**.
 
 ---
-
 ## 📸 Screenshots
 
-| AI ChatBot| VS Code Overview |
+| AI ChatBot | VS Code Overview |
 | :---: | :---: |
-| ![Screenshot 1](01%20Python-Beginner-to-Advanced/Class1/1.png) | ![Screenshot 2](01%20Python-Beginner-to-Advanced/Class1/2.png) |
+| ![Screenshot 1](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/1.png) | ![Screenshot 2](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/2.png) |
 
 | ATS Job Analyzer | AI/ML Model |
 | :---: | :---: |
-| ![Screenshot 3](01%20Python-Beginner-to-Advanced/Class1/3.png) | ![Screenshot 4](01%20Python-Beginner-to-Advanced/Class1/4.png) |
+| ![Screenshot 3](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/3.png) | ![Screenshot 4](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/4.png) |
 
 | Enterprise AI Business Assistant | Dashboard |
 | :---: | :---: |
-| ![Screenshot 5](01%20Python-Beginner-to-Advanced/Class1/5.png) | ![Screenshot 6](01%20Python-Beginner-to-Advanced/Class1/6.png) |
-
----
-
-
+| ![Screenshot 5](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/5.png) | ![Screenshot 6](01%20Python-Beginner-to-Advanced/01-Python-Introduction-and-Foundations/6.png) |
 ## 🛠️ Technical Stack
 
 <div align="center">
