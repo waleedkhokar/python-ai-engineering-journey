@@ -27,7 +27,7 @@ This folder is **Step 1** of a complete learning path — from zero to productio
 🐍 Python → 📊 Data Science → 🤖 ML → 🧠 DL → 🚀 GenAI → 🤖 AI Agents
 
 **🛠️ Build With:**
-🌐 Web · 📱 Mobile · ☁️ Cloud · ⚙️ DevOps
+🌐 Web > 📱 Mobile > ☁️ Cloud > ⚙️ DevOps
 
 | Step | What You'll Master |
 |------|-------------------|
