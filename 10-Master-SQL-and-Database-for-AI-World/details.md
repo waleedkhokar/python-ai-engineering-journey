@@ -1,10 +1,3 @@
-Yes. Since **SQL is now a separate top-level subject**, the main SQL README should **not be written as if it belongs to Data Science**. It should be the master README for your entire `SQL-Beginner-to-Advanced` folder, while every numbered subfolder gets its own focused README + notebook later.
-
-I would also remove the duplicate “full section documentation” from the parent README. The parent should explain the **whole journey, architecture, modules, standards, progression, and purpose**, while detailed implementation belongs inside each module.
-
-Use this as your main:
-
-````markdown
 # 🗄️ SQL — Beginner to Advanced
 
 > **Complete SQL, Relational Database, Database Engineering, and Database Architecture Journey**
