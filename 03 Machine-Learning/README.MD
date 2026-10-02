@@ -473,60 +473,6 @@ If the answer is **no** for several of these, revisit the topic.
 ├── 24-Model-Deployment/
 ├── 25-ML-Engineering-Practices/
 │
-├── Projects/        # Only used when explicitly requested
+├── Projects/
 │
-└── README.md        # (this file)
-
-
-
-
-cat > README.md << 'EOF'
-# 📘 03 — Machine Learning
-
-Full Machine Learning curriculum — **30 days**, **17 modules + 4 real projects**.
-
-## 📅 Timeline
-- **Start:** Jan 1, 2026
-- **End:** Jan 30, 2026
-- **Duration:** 30 days
-
-## 📁 Structure
-
-| # | Folder | Date |
-|---|--------|------|
-| 01 | `00-Setup-and-Environment` | Jan 1 |
-| 02 | `01-ML-Fundamentals` | Jan 2 |
-| 03 | `02-Data-Preprocessing` | Jan 3 |
-| 04 | `03-Regression` | Jan 5 |
-| 05 | `04-Classification` | Jan 8 |
-| 06 | `05-Ensemble-Methods` | Jan 11 |
-| 07 | `06-Clustering` | Jan 13 |
-| 08 | `07-Dimensionality-Reduction` | Jan 15 |
-| 09 | `08-Model-Evaluation` | Jan 17 |
-| 10 | `09-Hyperparameter-Tuning` | Jan 19 |
-| 11 | `10-Feature-Selection` | Jan 20 |
-| 12 | `11-Time-Series` | Jan 22 |
-| 13 | `12-Recommendation-Systems` | Jan 24 |
-| 14 | `13-NLP-Basics` | Jan 25 |
-| 15 | `14-ML-Pipelines` | Jan 26 |
-| 16 | `15-MLflow-and-Experiment-Tracking` | Jan 27 |
-| 17 | `16-Model-Deployment` | Jan 28 |
-| 18 | `Projects/01-House-Price-Prediction` | Jan 29 |
-| 19 | `Projects/02-Breast-Cancer-Classification` | Jan 29 |
-| 20 | `Projects/03-Customer-Segmentation` | Jan 30 |
-| 21 | `Projects/04-Sales-Forecasting` | Jan 30 |
-
-## 🎯 Goal
-Go from zero to job-ready in classical Machine Learning — able to build, evaluate, and deploy real models end-to-end.
-
-## ✅ How to Use
-1. Work through folders **in order**.
-2. Each folder has its own **README** with topics, deliverables, and completion criteria.
-3. Do the **4 projects** at the end — they consolidate everything.
-4. Commit daily with a descriptive message.
-
-## 🔗 Next Step
-After completion → **04 Deep-Learning** (Feb 1 → Feb 20, 2026).
-EOF
-
-echo "✅ Top-level README.md created."
+└── README.md        
