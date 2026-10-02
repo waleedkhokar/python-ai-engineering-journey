@@ -60,7 +60,7 @@ Save / Load Model
    ↓
 Prediction Function
    ↓
-API / Deployment Ready
+API / Deployment Readyyy
 ```
 
 > **Important:** This project is for Machine Learning education and demonstration. It is **not a clinically validated medical diagnostic system**.
