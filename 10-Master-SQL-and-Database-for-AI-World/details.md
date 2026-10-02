@@ -1,10 +1,3 @@
-Yes. Since **SQL is now a separate top-level subject**, the main SQL README should **not be written as if it belongs to Data Science**. It should be the master README for your entire `SQL-Beginner-to-Advanced` folder, while every numbered subfolder gets its own focused README + notebook later.
-
-I would also remove the duplicate “full section documentation” from the parent README. The parent should explain the **whole journey, architecture, modules, standards, progression, and purpose**, while detailed implementation belongs inside each module.
-
-Use this as your main:
-
-````markdown
 # 🗄️ SQL — Beginner to Advanced
 
 > **Complete SQL, Relational Database, Database Engineering, and Database Architecture Journey**
@@ -1705,36 +1698,3 @@ Full-Stack Developer with 1+ year of experience building scalable **web applicat
 ---
 
 **Built as part of the journey toward becoming a Full-Stack AI Engineer.**
-
-````
-
-### One change I strongly recommend
-
-Because this is now a **separate SQL top-level folder**, change the first lines from your current:
-
-> `Data Science → Database Engineering`  
-> `Topic 10: SQL`
-
-to:
-
-```markdown
-> **SQL → Database Engineering → AI Engineering**
->
-> **Complete SQL and Database Engineering Track**
-````
-
-That keeps your repository architecture clean:
-
-```text
-01-Python-Beginner-to-Advanced
-02-Data-Science
-03-SQL-Beginner-to-Advanced
-04-Machine-Learning
-05-Deep-Learning
-06-Generative-AI
-07-Agentic-AI
-08-MLOps
-09-AI-Engineering
-```
-
-So **SQL is its own complete engineering track**, while `02-Data-Science` can remain focused on NumPy → Pandas → visualization → cleaning → EDA → feature engineering → statistics → pipelines.
