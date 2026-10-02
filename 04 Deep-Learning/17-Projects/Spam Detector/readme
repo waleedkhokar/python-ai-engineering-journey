@@ -1,0 +1,585 @@
+# 📱 SMS Spam & Scam Detector
+
+## 🎯 Project Overview
+
+This project is a **Machine Learning-based SMS Spam & Scam Detector**.
+
+The goal was to build a model that can read an SMS message and classify it into one of two categories:
+
+- `ham` → NOT SPAM / legitimate message
+- `spam` → SPAM / SCAM message
+
+The project follows a complete Machine Learning workflow, starting from raw text data and ending with a trained classification model that can make predictions on unseen SMS messages.
+
+---
+
+
+
+## 🗂️ Dataset
+
+The project uses the **SMS Spam Collection** dataset.
+
+The dataset contains SMS messages labeled as either `ham` or `spam`.
+
+### Initial Dataset
+
+- Total messages: **5,572**
+- Columns: `label`, `text`
+
+### Label Distribution
+
+| Label | Percentage |
+|---|---:|
+| HAM | 87.37% |
+| SPAM | 12.63% |
+
+The dataset is naturally imbalanced because normal SMS messages are much more common than spam messages.
+
+We did not artificially balance the dataset. Instead, we preserved the original distribution and used **stratified train/test splitting**.
+
+---
+
+
+
+## 🧹 1. Data Cleaning
+
+Before training the model, we performed basic data-quality checks.
+
+We checked:
+
+- Missing values
+- Duplicate rows
+- Data types
+- Unique labels
+- Class distribution
+
+### Missing Values
+
+There were **no missing values** in either column.
+
+### Duplicate Rows
+
+The dataset contained **403 duplicate rows**.
+
+We removed them using:
+
+```python
+df = df.drop_duplicates().reset_index(drop=True)
+```
+
+After removing duplicates, the dataset contained:
+
+```text
+5,169 unique SMS messages
+```
+
+We also verified that the dataset contained only two valid labels:
+
+```text
+ham
+spam
+```
+
+---
+
+## ⚖️ 2. Class Distribution
+
+After cleaning the dataset, we checked the distribution of HAM and SPAM messages.
+
+The final distribution was approximately:
+
+```text
+HAM  → 87.37%
+SPAM → 12.63%
+```
+
+This showed that the dataset is imbalanced.
+
+This is important because a model could achieve high accuracy by mostly predicting HAM while still missing many SPAM messages.
+
+Therefore, throughout the project we paid attention to:
+
+* Precision
+* Recall
+* F1-score
+* Confusion Matrix
+
+and not just accuracy.
+
+---
+
+## ✂️ 3. Train/Test Split
+
+We separated the dataset into training and testing data.
+
+```text
+80% → Training
+20% → Testing
+```
+
+Final split:
+
+```text
+Training samples → 4,135
+Testing samples  → 1,034
+```
+
+We used:
+
+```python
+stratify=y
+```
+
+to preserve approximately the same HAM/SPAM ratio in both datasets.
+
+We also used:
+
+```python
+random_state=42
+```
+
+so that the same train/test split could be reproduced.
+
+The testing data was kept separate and unseen during model training.
+
+---
+
+## 🔢 4. TF-IDF Text Vectorization
+
+Machine Learning models cannot directly understand raw SMS text.
+
+For example:
+
+```text
+"Congratulations! You have won a cash prize!"
+```
+
+must first be converted into numerical features.
+
+We used:
+
+```python
+TfidfVectorizer()
+```
+
+TF-IDF stands for **Term Frequency-Inverse Document Frequency**.
+
+It converts text into numerical features and gives importance to words based on how frequently and uniquely they appear in the dataset.
+
+We fitted TF-IDF only on the training data:
+
+```python
+X_train_tfidf = tfidf.fit_transform(X_train)
+X_test_tfidf = tfidf.transform(X_test)
+```
+
+This prevents information from the test set from leaking into the training process.
+
+The resulting feature matrices were:
+
+```text
+Training → (4135, 7680)
+Testing  → (1034, 7680)
+```
+
+This means each SMS was represented using **7,680 text features**.
+
+---
+
+## 🤖 5. Model 1 — Logistic Regression
+
+The first Machine Learning model we trained was **Logistic Regression**.
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression(max_iter=1000)
+
+model.fit(X_train_tfidf, y_train)
+```
+
+### Why Logistic Regression?
+
+Logistic Regression is a strong algorithm for binary classification.
+
+Our problem contains exactly two classes:
+
+```text
+HAM
+SPAM
+```
+
+It also works very well with high-dimensional sparse features such as TF-IDF.
+
+Therefore, Logistic Regression was a good first model and baseline for our SMS classification problem.
+
+---
+
+## 📊 Logistic Regression Results
+
+### Accuracy
+
+```text
+96.42%
+```
+
+### Classification Results
+
+| Class | Precision | Recall | F1-score |
+| ----- | --------: | -----: | -------: |
+| HAM   |       96% |   100% |      98% |
+| SPAM  |       96% |    75% |      84% |
+
+The model achieved strong overall performance.
+
+However, the SPAM recall was **75%**, meaning some actual spam messages were still missed.
+
+---
+
+## 📊 6. Logistic Regression Confusion Matrix
+
+The confusion matrix was:
+
+```text
+              Predicted
+              HAM   SPAM
+
+Actual HAM    899     4
+Actual SPAM    33    98
+```
+
+Meaning:
+
+* **899** HAM messages were correctly classified as HAM.
+* **4** HAM messages were incorrectly classified as SPAM.
+* **98** SPAM messages were correctly classified as SPAM.
+* **33** SPAM messages were incorrectly classified as HAM.
+
+The most important error was:
+
+```text
+33 actual SPAM messages were missed.
+```
+
+These are **false negatives**.
+
+---
+
+## 🔎 7. Error Analysis
+
+Instead of stopping after calculating accuracy, we performed error analysis.
+
+We created a DataFrame containing:
+
+```text
+text
+actual
+predicted
+```
+
+Then we specifically looked at:
+
+```text
+Actual = spam
+Predicted = ham
+```
+
+This showed the messages that the model failed to identify as spam.
+
+There were:
+
+```text
+33 missed spam messages
+```
+
+The missed messages included different types of spam such as:
+
+* Prize and reward messages
+* Promotional messages
+* Premium services
+* Dating advertisements
+* Suspicious service notifications
+* Quiz and competition messages
+* Adult-content promotions
+
+This demonstrated that a high accuracy score does not mean the model is perfect.
+
+Error analysis helps us understand **where and why the model makes mistakes**.
+
+---
+
+## 🧪 8. Testing New SMS Messages
+
+After evaluating the model on the test dataset, we created a reusable prediction function.
+
+```python
+def predict_sms(message):
+    message_tfidf = tfidf.transform([message])
+    prediction = model.predict(message_tfidf)[0]
+
+    return prediction
+```
+
+This allows us to provide a new SMS message and receive a prediction:
+
+```text
+ham
+```
+
+or:
+
+```text
+spam
+```
+
+### Example 1
+
+Input:
+
+```text
+"URGENT! You have won a cash prize. Call this number now!"
+```
+
+Prediction:
+
+```text
+spam
+```
+
+### Example 2
+
+Input:
+
+```text
+"Hey bro, I will reach home in 20 minutes."
+```
+
+Prediction:
+
+```text
+ham
+```
+
+We also discovered that the model can make mistakes on completely new real-world messages.
+
+For example, one reward-style message was incorrectly predicted as HAM.
+
+This is an important Machine Learning lesson:
+
+> Strong benchmark performance does not guarantee perfect predictions on unseen real-world data.
+
+---
+
+## 🤖 9. Model 2 — Multinomial Naive Bayes
+
+After Logistic Regression, we trained a second Machine Learning model:
+
+```python
+from sklearn.naive_bayes import MultinomialNB
+
+nb_model = MultinomialNB()
+
+nb_model.fit(X_train_tfidf, y_train)
+```
+
+### Why Multinomial Naive Bayes?
+
+Multinomial Naive Bayes is a classic Machine Learning algorithm for text classification.
+
+It is:
+
+* Fast
+* Simple
+* Efficient
+* Suitable for word-based features
+* Commonly used for text classification problems
+
+We trained it using the **same TF-IDF features**, same training data, and same testing data so that we could make a fair comparison.
+
+---
+
+## 📊 Naive Bayes Results
+
+### Accuracy
+
+```text
+95.26%
+```
+
+### Classification Results
+
+| Class | Precision | Recall | F1-score |
+| ----- | --------: | -----: | -------: |
+| HAM   |       95% |   100% |      97% |
+| SPAM  |      100% |    63% |      77% |
+
+Naive Bayes had **100% SPAM precision**, meaning its SPAM predictions were extremely precise on the test set.
+
+However, its SPAM recall was only **63%**, meaning it missed more actual spam messages.
+
+---
+
+## 🏆 10. Model Comparison
+
+We compared both models using multiple metrics.
+
+| Metric         | Logistic Regression | Naive Bayes |
+| -------------- | ------------------: | ----------: |
+| Accuracy       |          **96.42%** |      95.26% |
+| SPAM Precision |                 96% |    **100%** |
+| SPAM Recall    |             **75%** |         63% |
+| SPAM F1-score  |             **84%** |         77% |
+
+### Final Decision
+
+**Logistic Regression performed better overall.**
+
+We did not select the final model based only on accuracy.
+
+We considered:
+
+* Accuracy
+* Precision
+* Recall
+* F1-score
+* Confusion Matrix
+* False negatives
+* Error analysis
+* Real SMS testing
+
+For this SMS spam classification problem, Logistic Regression provided the better overall balance.
+
+---
+
+## 🔄 11. Complete Machine Learning Pipeline
+
+The complete workflow of the project was:
+
+```text
+Raw SMS Dataset
+        ↓
+Data Inspection
+        ↓
+Missing Value Check
+        ↓
+Duplicate Removal
+        ↓
+Label Validation
+        ↓
+Class Distribution Analysis
+        ↓
+Train/Test Split
+        ↓
+TF-IDF Vectorization
+        ↓
+Logistic Regression
+        ↓
+Predictions
+        ↓
+Model Evaluation
+        ↓
+Confusion Matrix
+        ↓
+Error Analysis
+        ↓
+Real SMS Testing
+        ↓
+Multinomial Naive Bayes
+        ↓
+Model Comparison
+        ↓
+Best Model Selected
+```
+
+---
+
+## 🧠 12. What I Learned
+
+Through this project, I learned how to build a complete Machine Learning classification pipeline instead of simply training a model.
+
+I learned how to:
+
+* Load a real-world dataset
+* Understand the structure of the data
+* Check missing values
+* Detect and remove duplicate data
+* Validate target labels
+* Analyze class distribution
+* Split data into training and testing sets
+* Use stratified splitting
+* Understand data leakage
+* Convert text into numerical features
+* Use TF-IDF
+* Train Logistic Regression
+* Train Multinomial Naive Bayes
+* Make predictions
+* Calculate accuracy
+* Understand precision
+* Understand recall
+* Understand F1-score
+* Interpret a confusion matrix
+* Identify false positives and false negatives
+* Perform error analysis
+* Test a model on new SMS messages
+* Compare multiple Machine Learning models
+* Select a model based on the actual problem rather than accuracy alone
+
+---
+
+## 🏅 13. Final Achievement
+
+### Project Completed Successfully
+
+**Project:** SMS Spam & Scam Detector
+
+**Task:** Binary Text Classification
+
+**Dataset:** SMS Spam Collection
+
+**Final Dataset Size:** 5,169 unique SMS messages
+
+**Training Samples:** 4,135
+
+**Testing Samples:** 1,034
+
+**Text Representation:** TF-IDF
+
+**Models Tested:**
+
+1. Logistic Regression
+2. Multinomial Naive Bayes
+
+**Best Model:** Logistic Regression
+
+**Best Test Accuracy:** **96.42%**
+
+**SPAM Precision:** **96%**
+
+**SPAM Recall:** **75%**
+
+**SPAM F1-score:** **84%**
+
+---
+
+## 🏁 Final Model
+
+The final selected Machine Learning pipeline is:
+
+```text
+SMS Message
+     ↓
+TF-IDF Vectorization
+     ↓
+Logistic Regression
+     ↓
+HAM / SPAM
+```
+
+## Final Result
+
+The project successfully demonstrated a complete **text classification workflow using traditional Machine Learning**.
+
+The final Logistic Regression model achieved **96.42% accuracy** on the unseen test set and provided the best overall balance between SPAM precision, recall, and F1-score compared with Multinomial Naive Bayes.
+
+**Project Status: ✅ COMPLETED**
+```
