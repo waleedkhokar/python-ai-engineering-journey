@@ -1,50 +1,40 @@
-# 04 — Deep Learning
+# 🤖 Deep Learning
 
-> Stage 04 of your AI Engineering roadmap  
-> Level: Beginner → Intermediate → Advanced  
-> Target: **Job‑Ready Deep Learning Understanding**
-
----
-
-## 🎯 What is this repository?
-
-This is your **complete, serious Deep Learning curriculum**.
-
-It is not a short tutorial, crash course, or cheat sheet. It is designed to take you from:
-
-Beginner  
-→ Strong Fundamentals  
-→ Intermediate  
-→ Advanced Understanding  
-→ Practical Deep Learning  
-→ **Job‑Ready Deep Learning Engineer**
-
-Explanations are **beginner‑friendly** (simple language, step‑by‑step), but the **depth is not beginner‑level**. We will cover real mathematics, internal mechanisms, experiments, and engineering decisions.
+> **Stage 4 — Deep Learning**
+> **Goal:** Build a strong neural-network foundation and become practical with PyTorch for AI, Computer Vision, NLP, and later GenAI/LLM development.
 
 ---
 
-## 🧠 Why Deep Learning?
+## 📌 What is Deep Learning?
 
-Deep Learning is the engine behind most of today’s “AI”:
+**Deep Learning** is a subfield of Machine Learning that uses **neural networks with multiple layers** to learn patterns from data.
 
-- **Computer Vision** – image classification, detection, segmentation, face recognition.
-- **Natural Language Processing** – text classification, translation, question answering, summarization.
-- **Speech & Audio** – speech recognition, speaker identification, music generation.
-- **Generative Models** – image generation, style transfer, modern Generative AI and LLMs.
-- **Recommendation & Representation** – embeddings, user/item representations.
-- **Reinforcement Learning** – deep RL for games and robotics.
+Instead of manually defining every rule, a neural network learns useful representations from examples.
 
-Classical Machine Learning is powerful, but Deep Learning:
+```text
+Data
+ ↓
+Neural Network
+ ↓
+Learning Patterns
+ ↓
+Predictions / Representations
+```
 
-- Learns **representations directly from raw data** (pixels, audio, tokens).
-- Scales with **large data + compute**.
-- Forms the foundation for **Transformers, Generative AI, and LLMs**.
+Deep Learning is widely used in:
 
-This repository is where you build that foundation deeply and properly.
+* 🖼️ Computer Vision
+* 📝 NLP
+* 🎤 Speech
+* 🤖 Generative AI
+* 🧠 LLMs
+* 🚗 Autonomous Systems
+* 🔍 Recommendation Systems
+* 📊 Time-Series Prediction
 
 ---
 
-## 📂 Repository Structure
+# 🗂️ Deep Learning Structure
 
 ```text
 04-Deep-Learning/
@@ -66,5 +56,345 @@ This repository is where you build that foundation deeply and properly.
 ├── 14-Computer-Vision-with-Deep-Learning/
 ├── 15-NLP-with-Deep-Learning/
 ├── 16-Model-Deployment/
-├── 17-Projects/    # separate; not used for theory unless you decide
-└── README.md       # (this file)
+├── 17-Projects/
+└── README.md
+```
+
+---
+
+# 📅 Learning Schedule
+
+| Module | Topic                       | Date             |
+| ------ | --------------------------- | ---------------- |
+| 00     | Setup & Environment         | June 1, 2026     |
+| 01     | Deep Learning Fundamentals  | June 1, 2026     |
+| 02     | Neural Networks Basics      | June 2, 2026     |
+| 03     | Activation Functions        | June 3, 2026     |
+| 04     | Loss Functions & Optimizers | June 4, 2026     |
+| 05     | Backpropagation             | June 5, 2026     |
+| 06     | Regularization              | June 6, 2026     |
+| 07     | CNN                         | June 7, 2026     |
+| 08     | RNN                         | June 8, 2026     |
+| 09     | LSTM & GRU                  | June 9, 2026     |
+| 10     | Transformers Basics         | June 10, 2026    |
+| 11     | Transfer Learning           | June 11, 2026    |
+| 12     | Autoencoders                | June 12, 2026    |
+| 13     | GANs                        | June 13, 2026    |
+| 14     | Computer Vision             | June 14, 2026    |
+| 15     | NLP with Deep Learning      | June 15, 2026    |
+| 16     | Model Deployment            | June 16, 2026    |
+| 17     | Deep Learning Projects      | June 17–20, 2026 |
+
+---
+
+# 🧠 Learning Path
+
+```text
+Deep Learning Fundamentals
+        ↓
+Neural Networks
+        ↓
+Activation Functions
+        ↓
+Loss Functions + Optimizers
+        ↓
+Backpropagation
+        ↓
+Regularization
+        ↓
+CNN
+        ↓
+RNN
+        ↓
+LSTM + GRU
+        ↓
+Transformers
+        ↓
+Transfer Learning
+        ↓
+Autoencoders
+        ↓
+GANs
+        ↓
+Computer Vision
+        ↓
+NLP
+        ↓
+Model Deployment
+        ↓
+Projects
+```
+
+---
+
+# 🛠️ Main Technology Stack
+
+### Programming
+
+* Python
+* NumPy
+* Pandas
+
+### Deep Learning
+
+* **PyTorch**
+* Torchvision
+* Torch Dataset / DataLoader
+* CUDA basics
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+
+### Deployment
+
+* FastAPI
+* Pydantic
+* Docker
+* REST APIs
+
+---
+
+# 📚 Core Concepts Covered
+
+### Neural Networks
+
+* Neurons
+* Weights
+* Bias
+* Layers
+* Forward propagation
+* Backpropagation
+* Computational graphs
+* Parameters
+* Hyperparameters
+
+### Training
+
+* Epochs
+* Batch size
+* Learning rate
+* Loss functions
+* Optimizers
+* Gradients
+* Gradient descent
+
+### Model Improvement
+
+* Overfitting
+* Underfitting
+* Dropout
+* Weight decay
+* L1/L2 regularization
+* Batch normalization
+* Layer normalization
+* Early stopping
+* Data augmentation
+
+### Architectures
+
+* ANN
+* CNN
+* RNN
+* LSTM
+* GRU
+* Transformers
+* Autoencoders
+* GANs
+
+---
+
+# 🎯 Major Focus Areas
+
+Because the long-term goal is **Full-Stack AI Engineer**, this stage focuses especially on understanding the foundations behind modern AI systems.
+
+### ⭐ High Focus
+
+* PyTorch
+* Neural Networks
+* CNNs
+* RNN/LSTM concepts
+* Transformers
+* Transfer Learning
+* Model training
+* Model evaluation
+* Model inference
+
+### 🔹 Practical Focus
+
+* Computer Vision
+* NLP
+* Model deployment
+* FastAPI
+* Docker
+
+### 🔸 Conceptual Foundation
+
+* Autoencoders
+* GANs
+* Advanced architectures
+
+The deeper **LLM, embeddings, RAG, AI agents, tools, workflows, and GenAI systems** will be covered in the later GenAI stage rather than duplicating them here.
+
+---
+
+# 🧪 Practical Workflow
+
+Every Deep Learning project should follow a workflow similar to:
+
+```text
+Problem Definition
+       ↓
+Dataset
+       ↓
+Data Cleaning
+       ↓
+Exploratory Analysis
+       ↓
+Preprocessing
+       ↓
+Train / Validation / Test Split
+       ↓
+Baseline Model
+       ↓
+Neural Network
+       ↓
+Training
+       ↓
+Validation
+       ↓
+Evaluation
+       ↓
+Hyperparameter Tuning
+       ↓
+Error Analysis
+       ↓
+Final Model
+       ↓
+Save Model
+       ↓
+API / Deployment
+```
+
+---
+
+# 🚀 Projects
+
+The final project stage focuses on applying the concepts instead of only studying theory.
+
+Planned progression:
+
+```text
+Project 1
+ANN / Neural Network
+        ↓
+Project 2
+CNN Image Classification
+        ↓
+Project 3
+Transfer Learning / Computer Vision
+        ↓
+Project 4
+NLP / Sequence Model
+```
+
+Projects will cover:
+
+* Dataset preparation
+* Model architecture
+* Training
+* Validation
+* Evaluation
+* Experimentation
+* Model saving
+* Inference
+* Deployment
+
+---
+
+# 🧠 Mental Model
+
+The most important idea of Deep Learning is:
+
+```text
+Input Data
+   ↓
+Neural Network
+   ↓
+Forward Pass
+   ↓
+Prediction
+   ↓
+Loss
+   ↓
+Backpropagation
+   ↓
+Gradients
+   ↓
+Optimizer
+   ↓
+Updated Weights
+   ↓
+Repeat
+```
+
+After many iterations:
+
+```text
+Random / Poor Weights
+        ↓
+Training
+        ↓
+Better Weights
+        ↓
+Learned Patterns
+        ↓
+Useful Model
+```
+
+---
+
+# 🎯 Final Goal
+
+By completing this stage, I should be able to:
+
+* Understand how neural networks work internally
+* Build models using **PyTorch**
+* Train and evaluate deep learning models
+* Understand CNN, RNN, LSTM, GRU and Transformer architectures
+* Apply deep learning to images and text
+* Use pretrained models and transfer learning
+* Understand modern Transformer foundations
+* Save and load trained models
+* Build inference APIs
+* Containerize models with Docker
+* Build complete Deep Learning projects
+* Understand the foundation required for **GenAI and LLM engineering**
+
+---
+
+# 🔗 Connection to the Next Stage
+
+```text
+Python
+   ↓
+Data Science
+   ↓
+Machine Learning
+   ↓
+Deep Learning  ← YOU ARE HERE
+   ↓
+Generative AI
+   ↓
+LLMs
+   ↓
+RAG
+   ↓
+AI Tools & Workflows
+   ↓
+Agentic AI
+   ↓
+MLOps / AI Deployment
+   ↓
+Full-Stack AI Engineer
