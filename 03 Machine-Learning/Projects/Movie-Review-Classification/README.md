@@ -3,6 +3,8 @@
 A Machine Learning and Natural Language Processing (NLP) project that analyzes movie reviews and predicts whether the sentiment is **Positive or Negative**.
 
 The system combines text preprocessing, a trained Machine Learning model, a Flask backend, and a web interface to provide sentiment predictions from user-submitted reviews.
+
+
 ##👩‍💻 About Me
 
 Hi, I'm **Sania Salahuddin**, a Software Engineering student at the University of Sargodha, passionate about Artificial Intelligence, Machine Learning, and Full Stack Web Development.
