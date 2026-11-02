@@ -1,0 +1,6 @@
+{
+  "name": "ChemLab AI",
+  "description": "AI-powered Chemistry Laboratory Assistant for undergraduate Chemistry students to understand experiments, generate viva questions, revise concepts, and track lab prep.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
