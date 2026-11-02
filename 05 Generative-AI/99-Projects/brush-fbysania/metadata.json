@@ -1,0 +1,6 @@
+{
+  "name": "Brush n Fabric by Sania",
+  "description": "Artisanal hand-painted and hand-embroidered bespoke dupattas crafted with love by Sania. Customizable luxury ethnic wear with direct WhatsApp ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
