@@ -1,0 +1,352 @@
+[
+  {
+    "document_id": "PK-001",
+    "title": "Constitution of the Islamic Republic of Pakistan, 1973",
+    "document_type": "Constitution",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator9d8e2ecc414c6d3371ac41114b61a2c4.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-002",
+    "title": "Pakistan Penal Code, 1860",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administratoracbdabf2b79c8956d6ea4804fcceb92d.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-003",
+    "title": "Code of Criminal Procedure, 1898",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator7db1e56f0f1d39a6e67573ec6b0944e2.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-004",
+    "title": "Code of Civil Procedure, 1908",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator6598dabbad120033d4d42d717dcf9755.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-005",
+    "title": "Contract Act, 1872",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-006",
+    "title": "Qanun-e-Shahadat Order, 1984",
+    "document_type": "Federal Law",
+    "jurisdiction": "Federal",
+    "authority": "Government of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-007",
+    "title": "Specific Relief Act, 1877",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administratorf257754bbb3c6863d879492bc8cd8f6e.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-008",
+    "title": "Limitation Act, 1908",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator3294e35255f255ea96b3356091fb4844.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-009",
+    "title": "Transfer of Property Act, 1882",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-010",
+    "title": "Registration Act, 1908",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator0f29bc9f1e3dfed37c0034eed1e29d53.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-011",
+    "title": "Partnership Act, 1932",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-012",
+    "title": "Companies Act, 2017",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-013",
+    "title": "Sale of Goods Act, 1930",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-014",
+    "title": "Arbitration Act, 1940",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/english/",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-015",
+    "title": "Anti-Money Laundering Act, 2010",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator47c7a5354061a54634a6246d2046ddcf.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "PK-016",
+    "title": "Anti-Terrorism Act, 1997",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administratora8658ee078a7253e456379e890652a2a.pdf",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-017",
+    "title": "Protection against Harassment of Women at the Workplace Act, 2010",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administratorc22e81f4add9ea3dc023086953ca2b4f.pdf",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-018",
+    "title": "Electronic Transactions Ordinance, 2002",
+    "document_type": "Federal Ordinance",
+    "jurisdiction": "Federal",
+    "authority": "Government of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administratordbc98dd49f2df3b1d07bb986dcceb9a3.pdf",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-019",
+    "title": "Juvenile Justice System Act, 2018",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator01c49d3cff67abf97e39c2e1d6dacc43.pdf",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "PK-020",
+    "title": "Legal Aid and Justice Authority Act, 2020",
+    "document_type": "Federal Act",
+    "jurisdiction": "Federal",
+    "authority": "Parliament of Pakistan",
+    "source_name": "Pakistan Code",
+    "source_url": "https://pakistancode.gov.pk/pdffiles/administrator11e683b2b54d0251e10b6fa8181d73e4.pdf",
+    "priority": "High"
+  },
+  {
+    "document_id": "SD-001",
+    "title": "Sindh Civil Courts Ordinance, 1962",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "High"
+  },
+  {
+    "document_id": "SD-002",
+    "title": "Sindh Local Government Act, 2013",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "High"
+  },
+  {
+    "document_id": "SD-003",
+    "title": "Sindh Rented Premises Ordinance, 1979",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "High"
+  },
+  {
+    "document_id": "SD-004",
+    "title": "Sindh Public Property (Removal of Encroachment) Act, 2010",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-005",
+    "title": "Sindh Environmental Protection Act, 2014",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-006",
+    "title": "Sindh Consumer Protection Act, 2014",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-007",
+    "title": "Sindh Employees' Social Security Act, 2016",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-008",
+    "title": "Sindh Domestic Violence (Prevention and Protection) Act, 2013",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-009",
+    "title": "Sindh Child Marriage Restraint Act, 2013",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SD-010",
+    "title": "Sindh Transparency and Right to Information Act, 2016",
+    "document_type": "Sindh Law",
+    "jurisdiction": "Sindh",
+    "authority": "Government of Sindh",
+    "source_name": "Sindh Code",
+    "source_url": "https://www.sindhlaws.gov.pk/SindhIndex.aspx",
+    "priority": "Medium"
+  },
+  {
+    "document_id": "SHC-001",
+    "title": "Sindh High Court Judgment — dataset placeholder 01",
+    "document_type": "Court Judgment",
+    "jurisdiction": "Sindh",
+    "authority": "Sindh High Court",
+    "source_name": "SHC Case Law",
+    "source_url": "https://caselaw.shc.gov.pk/",
+    "priority": "High"
+  },
+  {
+    "document_id": "SHC-002",
+    "title": "Sindh High Court Judgment — dataset placeholder 02",
+    "document_type": "Court Judgment",
+    "jurisdiction": "Sindh",
+    "authority": "Sindh High Court",
+    "source_name": "SHC Case Law",
+    "source_url": "https://caselaw.shc.gov.pk/",
+    "priority": "High"
+  },
+  {
+    "document_id": "SHC-003",
+    "title": "Sindh High Court Judgment — dataset placeholder 03",
+    "document_type": "Court Judgment",
+    "jurisdiction": "Sindh",
+    "authority": "Sindh High Court",
+    "source_name": "SHC Case Law",
+    "source_url": "https://caselaw.shc.gov.pk/",
+    "priority": "High"
+  },
+  {
+    "document_id": "SHC-004",
+    "title": "Sindh High Court Judgment — dataset placeholder 04",
+    "document_type": "Court Judgment",
+    "jurisdiction": "Sindh",
+    "authority": "Sindh High Court",
+    "source_name": "SHC Case Law",
+    "source_url": "https://caselaw.shc.gov.pk/",
+    "priority": "High"
+  },
+  {
+    "document_id": "SHC-005",
+    "title": "Sindh High Court Judgment — dataset placeholder 05",
+    "document_type": "Court Judgment",
+    "jurisdiction": "Sindh",
+    "authority": "Sindh High Court",
+    "source_name": "SHC Case Law",
+    "source_url": "https://caselaw.shc.gov.pk/",
+    "priority": "High"
+  }
+]

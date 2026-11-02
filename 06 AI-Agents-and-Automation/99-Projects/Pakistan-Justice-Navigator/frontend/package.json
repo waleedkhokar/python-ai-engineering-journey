@@ -1,0 +1,25 @@
+{
+  "name": "pakistan-justice-navigator",
+  "version": "0.5.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test:core": "node scripts/check-corpus.mjs && node scripts/check-product-copy.mjs && node scripts/check-landing-v5.mjs && node scripts/check-member4.mjs && python scripts/test_member4_core.py",
+    "check": "npm run test:core && npm run typecheck && npm run build",
+    "test:member4": "node scripts/check-member4.mjs && python scripts/test_member4_core.py"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.8.0"
+  }
+}
