@@ -1,0 +1,107 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://www.nature.com/subjects/machine-learning.rss"
+      },
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "dc233006-99a0-4ece-a001-f94ccc4a59be",
+      "name": "RSS Feed Trigger"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3-flash-preview"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a healthcare AI research assistant. Analyze this article:\n\nTitle: {{ $json.title }}\nContent: {{ $json.contentSnippet }}\n\nTask:\n1. Decide if this article is relevant to healthcare AI, agentic workflows, or medical model evaluation. Answer YES or NO.\n2. If YES, write a 2-line summary explaining why it matters for healthcare AI researchers.\n3. If NO, just write \"Not relevant to healthcare AI.\"\n\nFormat your response exactly like this:\nRelevant: YES/NO\nSummary: [your 2-line summary]"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "40fc06a2-07ca-4ee8-ba48-822084da5dae",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "GBeqSu6CwVgxuJ75",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=🩺 New Medical AI Research Alert!\n\n{{ $json.content.parts[0].text }}\n\nRead more: {{ $('RSS Feed Trigger').item.json.link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "ab0d2d6f-a600-4630-b705-c405713864f5",
+      "name": "Discord",
+      "webhookId": "d1425cbd-fd63-4f43-baec-01a0ad70ee48",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "aEmlOL7pDZB6dS6K",
+          "name": "Discord Webhook account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "RSS Feed Trigger": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "194da8ce07dd2d0167da22f34e55f9bcbf088086943aa4e823b65403fd5bf84c"
+  }
+}
