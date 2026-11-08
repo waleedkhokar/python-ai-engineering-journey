@@ -1,5 +1,22 @@
 # Fake News Detection System
 
+
+## About the Author
+
+Hi! I'm **Sania Salahuddin**, a Software Engineering student and Full Stack Web Developer with a strong interest in Artificial Intelligence, Machine Learning, and Natural Language Processing.
+
+I enjoy building practical, user-focused applications that combine modern web technologies with intelligent solutions. My technical interests include the MERN stack, Python, Flask, Machine Learning, NLP, and AI-powered application development.
+
+
+**Connect with me:**
+- **GitHub:** [SaniaSalahuddin](https://github.com/SaniaSalahuddin)
+- **LinkedIn:** [Sania Salahuddin](https://linkedin.com/in/sania-salahuddin-1a4781324/)
+- **Portfolio:** [My Portfolio](https://sania-portfolio-2026.vercel.app/)
+
+---
+
+
+
 A machine learning-based web application that analyzes news headlines and article content to classify news using a trained text classification model.
 
 The project combines **Machine Learning, NLP, Flask, HTML, CSS, and JavaScript** to provide a simple web interface for testing news articles.
