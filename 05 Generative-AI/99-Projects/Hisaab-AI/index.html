@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HisaabAI — sales, profit and pending-payment tracker with AI business advice for small Pakistani businesses." />
+  <title>HisaabAI — Smart Business Hisaab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">H</div><div><strong>HisaabAI</strong><span>Smart business assistant</span></div></div>
+      <nav>
+        <button class="nav-link active" data-view="dashboard"><span>◫</span> Dashboard</button>
+        <button class="nav-link" data-view="entries"><span>↗</span> Sales Entries</button>
+        <button class="nav-link" data-view="assistant"><span>✦</span> AI Assistant</button>
+      </nav>
+      <div class="sidebar-card">
+        <span class="eyebrow">Built for Pakistan</span>
+        <p>Simple sales and profit tracking for small shops and home businesses.</p>
+      </div>
+      <p class="sidebar-footer">Data stays in your browser.</p>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">BUSINESS CONTROL CENTER</p><h1 id="pageTitle">Dashboard</h1></div>
+        <div class="top-actions"><button class="secondary-btn" id="exportBtn">Export CSV</button><button class="primary-btn" id="openEntryBtn">+ Add Sale</button></div>
+      </header>
+
+      <section class="view active" id="dashboardView">
+        <div class="hero-card">
+          <div><span class="status-pill">LIVE OVERVIEW</span><h2>Know exactly where your money is going.</h2><p>Track sales, costs, pending payments and profit — then let AI turn your numbers into practical next steps.</p></div>
+          <div class="hero-visual"><div class="ring"><strong id="heroProfit">Rs 0</strong><span>Net profit</span></div></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon">₨</div><span>Total Sales</span><strong id="totalSales">Rs 0</strong><small id="salesChange">0 transactions</small></article>
+          <article class="stat-card"><div class="stat-icon">↘</div><span>Total Cost</span><strong id="totalCost">Rs 0</strong><small>Inventory + workshop</small></article>
+          <article class="stat-card"><div class="stat-icon">◎</div><span>Pending</span><strong id="totalPending">Rs 0</strong><small id="pendingCount">0 customers</small></article>
+          <article class="stat-card accent"><div class="stat-icon">↗</div><span>Net Profit</span><strong id="totalProfit">Rs 0</strong><small id="marginText">0% margin</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel chart-panel"><div class="panel-head"><div><span class="eyebrow">PERFORMANCE</span><h3>Profit by day</h3></div><span class="muted">Last 7 active days</span></div><div id="chart" class="bar-chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow">PAYMENT HEALTH</span><h3>Collection status</h3></div></div><div class="donut-wrap"><div class="donut" id="donut"><div><strong id="paidPercent">0%</strong><span>Collected</span></div></div><div class="legend"><div><span class="dot paid"></span><p><b id="paidAmount">Rs 0</b><small>Received</small></p></div><div><span class="dot pending"></span><p><b id="pendingAmount">Rs 0</b><small>Pending</small></p></div></div></div></article>
+        </div>
+
+        <article class="panel recent-panel"><div class="panel-head"><div><span class="eyebrow">RECENT ACTIVITY</span><h3>Latest sales</h3></div><button class="text-btn" data-go="entries">View all →</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Customer</th><th>Item</th><th>Sale</th><th>Status</th><th>Profit</th></tr></thead><tbody id="recentBody"></tbody></table></div></article>
+      </section>
+
+      <section class="view" id="entriesView">
+        <article class="panel"><div class="panel-head entries-head"><div><span class="eyebrow">ALL RECORDS</span><h3>Sales Entries</h3></div><div class="filters"><input id="searchInput" type="search" placeholder="Search customer or item..."><select id="statusFilter"><option value="all">All statuses</option><option value="paid">Paid</option><option value="partial">Partial</option><option value="pending">Pending</option></select></div></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Customer</th><th>Item</th><th>Cost</th><th>Sale</th><th>Received</th><th>Pending</th><th>Profit</th><th></th></tr></thead><tbody id="entriesBody"></tbody></table></div><div id="emptyState" class="empty-state hidden"><div>＋</div><h3>No sales found</h3><p>Add your first sale or change the filters.</p></div></article>
+      </section>
+
+      <section class="view" id="assistantView">
+        <div class="assistant-grid">
+          <article class="ai-card"><span class="ai-orb">✦</span><span class="eyebrow">AI BUSINESS COACH</span><h2>Turn your daily hisaab into clear business decisions.</h2><p>The assistant analyses only your saved entries and gives practical advice in easy Roman Urdu.</p><button class="primary-btn large" id="analyzeBtn">Generate AI Analysis</button><small>Powered by Gemini when configured. Smart demo analysis is used otherwise.</small></article>
+          <article class="panel result-panel"><div class="panel-head"><div><span class="eyebrow">LATEST INSIGHT</span><h3>Your business report</h3></div><button class="text-btn" id="copyInsightBtn">Copy</button></div><div id="aiResult" class="ai-result"><div class="result-placeholder"><span>✦</span><h3>Ready when you are</h3><p>Add sales entries, then generate a personalised analysis.</p></div></div></article>
+        </div>
+        <article class="panel prompt-panel"><div class="panel-head"><div><span class="eyebrow">TRANSPARENCY</span><h3>AI instructions used</h3></div></div><pre id="systemPrompt"></pre></article>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="entryModal">
+    <div class="modal">
+      <div class="modal-head"><div><span class="eyebrow">NEW TRANSACTION</span><h2>Add Sale Entry</h2></div><button class="icon-btn" id="closeModal">×</button></div>
+      <form id="entryForm">
+        <div class="form-grid">
+          <label>Date<input type="date" name="date" required></label>
+          <label>Customer Name<input type="text" name="customer" required placeholder="e.g. Ahmed Khan"></label>
+          <label>Phone (optional)<input type="tel" name="phone" placeholder="03xx-xxxxxxx"></label>
+          <label>Product / Service<input type="text" name="item" required placeholder="e.g. Blue-cut glasses"></label>
+          <label>Product Cost (Rs)<input type="number" name="cost" min="0" required placeholder="0"></label>
+          <label>Workshop / Extra Cost (Rs)<input type="number" name="extra" min="0" value="0" required></label>
+          <label>Sale Price (Rs)<input type="number" name="sale" min="0" required placeholder="0"></label>
+          <label>Amount Received (Rs)<input type="number" name="received" min="0" required placeholder="0"></label>
+        </div>
+        <label>Notes<textarea name="notes" rows="3" placeholder="Optional details..."></textarea></label>
+        <div class="form-summary"><div><span>Estimated profit</span><strong id="formProfit">Rs 0</strong></div><div><span>Pending amount</span><strong id="formPending">Rs 0</strong></div></div>
+        <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelModal">Cancel</button><button type="submit" class="primary-btn">Save Entry</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast hidden" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

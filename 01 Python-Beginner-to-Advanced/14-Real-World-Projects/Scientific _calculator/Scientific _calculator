@@ -1,0 +1,298 @@
+"""
+Scientific Calculator GUI (Python + tkinter)
+Buttons, DEG/RAD, memory, history, keyboard support.
+Chalane ke liye:  python scientific_calculator_gui.py
+"""
+
+import ast
+import math
+import operator
+import re
+import tkinter as tk
+
+# ---------------------------------------------------------------
+# Calculator logic (safe evaluator, eval() istemal nahi hota)
+# ---------------------------------------------------------------
+state = {"deg": True, "ans": 0.0, "mem": 0.0}
+
+
+def _r(x):
+    return math.radians(x) if state["deg"] else x
+
+
+def _d(x):
+    return math.degrees(x) if state["deg"] else x
+
+
+def _clean(x):
+    return 0.0 if abs(x) < 1e-12 else x
+
+
+def _fact(n):
+    if n < 0 or int(n) != n:
+        raise ValueError("Factorial sirf 0, 1, 2... ka hota hai")
+    if n > 170:
+        raise ValueError("Number bohat bara hai")
+    return math.factorial(int(n))
+
+
+def _tan(x):
+    if state["deg"] and x % 180 == 90:
+        raise ValueError("tan 90 undefined hai")
+    return _clean(math.tan(_r(x)))
+
+
+def _log(x, fn):
+    if x <= 0:
+        raise ValueError("log sirf positive number ka hota hai")
+    return fn(x)
+
+
+def _sqrt(x):
+    if x < 0:
+        raise ValueError("Negative number ka sqrt nahi hota")
+    return math.sqrt(x)
+
+
+def _inv(fn, x):
+    if abs(x) > 1:
+        raise ValueError("-1 se 1 tak number do")
+    return _d(fn(x))
+
+
+FUNCS = {
+    "sin": lambda x: _clean(math.sin(_r(x))),
+    "cos": lambda x: _clean(math.cos(_r(x))),
+    "tan": _tan,
+    "asin": lambda x: _inv(math.asin, x),
+    "acos": lambda x: _inv(math.acos, x),
+    "atan": lambda x: _d(math.atan(x)),
+    "ln": lambda x: _log(x, math.log),
+    "log": lambda x: _log(x, math.log10),
+    "sqrt": _sqrt,
+    "fact": _fact,
+    "abs": abs,
+    "exp": math.exp,
+}
+CONSTS = {"pi": math.pi, "e": math.e}
+BIN = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul,
+       ast.Div: operator.truediv, ast.Mod: operator.mod, ast.Pow: operator.pow}
+
+
+def _eval(node):
+    if isinstance(node, ast.Expression):
+        return _eval(node.body)
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        return node.value
+    if isinstance(node, ast.BinOp) and type(node.op) in BIN:
+        a, b = _eval(node.left), _eval(node.right)
+        if isinstance(node.op, (ast.Div, ast.Mod)) and b == 0:
+            raise ValueError("Zero se taqseem nahi ho sakti")
+        if isinstance(node.op, ast.Pow) and abs(b) > 10000:
+            raise ValueError("Power bohat bara hai")
+        return BIN[type(node.op)](a, b)
+    if isinstance(node, ast.UnaryOp):
+        if isinstance(node.op, ast.USub):
+            return -_eval(node.operand)
+        if isinstance(node.op, ast.UAdd):
+            return _eval(node.operand)
+    if isinstance(node, ast.Name):
+        n = node.id.lower()
+        if n in CONSTS:
+            return CONSTS[n]
+        if n == "ans":
+            return state["ans"]
+        raise ValueError(f"Na-maloom naam: {node.id}")
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+        f = node.func.id.lower()
+        if f not in FUNCS:
+            raise ValueError(f"Na-maloom function: {node.func.id}")
+        return FUNCS[f](*[_eval(a) for a in node.args])
+    raise ValueError("Syntax galat hai")
+
+
+def evaluate(text):
+    s = text.replace("×", "*").replace("÷", "/").replace("−", "-")
+    s = s.replace("π", "pi").replace("√", "sqrt").replace("^", "**")
+    s = re.sub(r"(\d+(?:\.\d+)?|ans)!", r"fact(\1)", s)
+    s = re.sub(r"(\d|\)|\bpi\b|\be\b|\bans\b)\s*(\(|[a-zA-Z])", r"\1*\2", s)
+    s += ")" * (s.count("(") - s.count(")"))          # bracket khud band
+    try:
+        result = _eval(ast.parse(s, mode="eval"))
+    except SyntaxError:
+        raise ValueError("Syntax galat hai")
+    if isinstance(result, complex) or math.isnan(result) or math.isinf(result):
+        raise ValueError("Natija define nahi hai")
+    return result
+
+
+def fmt(x):
+    x = _clean(float(x))
+    s = float(f"{x:.12g}")
+    if abs(s) >= 1e15 or (s != 0 and abs(s) < 1e-9):
+        return f"{s:.6e}"
+    return str(int(s)) if s.is_integer() else str(s)
+
+
+# ---------------------------------------------------------------
+# GUI
+# ---------------------------------------------------------------
+BG, PANEL, SCREEN = "#e6ecf1", "#f6f9fb", "#dfe7ee"
+TEXT, MUTED = "#13212c", "#5d7080"
+KEY, FN, OP, ACCENT, RED = "#ffffff", "#d9e4ec", "#bcd6dc", "#0f766e", "#c2410c"
+
+LAYOUT = [
+    [("MC", "mc", FN), ("MR", "mr", FN), ("M+", "m+", FN), ("M−", "m-", FN), ("DEG", "mode", FN)],
+    [("sin", "sin(", FN), ("cos", "cos(", FN), ("tan", "tan(", FN), ("ln", "ln(", FN), ("log", "log(", FN)],
+    [("sin⁻¹", "asin(", FN), ("cos⁻¹", "acos(", FN), ("tan⁻¹", "atan(", FN), ("√", "√(", FN), ("xʸ", "^", FN)],
+    [("π", "π", FN), ("e", "e", FN), ("x²", "^2", FN), ("(", "(", FN), (")", ")", FN)],
+    [("7", "7", KEY), ("8", "8", KEY), ("9", "9", KEY), ("÷", "÷", OP), ("AC", "ac", RED)],
+    [("4", "4", KEY), ("5", "5", KEY), ("6", "6", KEY), ("×", "×", OP), ("⌫", "bs", OP)],
+    [("1", "1", KEY), ("2", "2", KEY), ("3", "3", KEY), ("−", "−", OP), ("Ans", "ans", FN)],
+    [("0", "0", KEY), (".", ".", KEY), ("n!", "!", FN), ("+", "+", OP), ("=", "=", ACCENT)],
+]
+
+
+class Calculator(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Scientific Calculator")
+        self.configure(bg=BG, padx=12, pady=12)
+        self.resizable(False, False)
+        self.expr = ""
+        self.just_eq = False
+        self.history = []
+
+        self.mem_lbl = tk.Label(self, text="Memory: 0", bg=BG, fg=MUTED, anchor="w")
+        self.mem_lbl.grid(row=0, column=0, columnspan=5, sticky="we")
+
+        screen = tk.Frame(self, bg=SCREEN, padx=10, pady=8)
+        screen.grid(row=1, column=0, columnspan=5, sticky="we", pady=(4, 10))
+        self.expr_lbl = tk.Label(screen, text="", bg=SCREEN, fg=MUTED,
+                                 font=("Segoe UI", 12), anchor="e")
+        self.expr_lbl.pack(fill="x")
+        self.res_lbl = tk.Label(screen, text="0", bg=SCREEN, fg=TEXT,
+                                font=("Segoe UI", 28, "bold"), anchor="e")
+        self.res_lbl.pack(fill="x")
+
+        for r, row in enumerate(LAYOUT, start=2):
+            for c, (label, val, color) in enumerate(row):
+                fg = "white" if color in (ACCENT, RED) else TEXT
+                b = tk.Button(self, text=label, width=5, height=2, bg=color, fg=fg,
+                              activebackground=color, relief="flat", bd=0,
+                              font=("Segoe UI", 11), command=lambda v=val: self.press(v))
+                b.grid(row=r, column=c, padx=3, pady=3, sticky="nsew")
+                if val == "mode":
+                    self.mode_btn = b
+
+        tk.Label(self, text="History (double-click se wapas lo):", bg=BG, fg=MUTED,
+                 anchor="w").grid(row=11, column=0, columnspan=5, sticky="we", pady=(8, 0))
+        self.hist_box = tk.Listbox(self, height=5, bg=PANEL, fg=TEXT, relief="flat",
+                                   font=("Segoe UI", 10), activestyle="none")
+        self.hist_box.grid(row=12, column=0, columnspan=5, sticky="we")
+        self.hist_box.bind("<Double-Button-1>", self.recall)
+
+        self.bind("<Key>", self.on_key)
+
+    # ---- display ----
+    def show(self, error=None):
+        self.expr_lbl.config(text=self.expr)
+        if error:
+            self.res_lbl.config(text=error, fg=RED, font=("Segoe UI", 11, "bold"))
+            return
+        self.res_lbl.config(fg=TEXT, font=("Segoe UI", 28, "bold"))
+        if not self.expr:
+            self.res_lbl.config(text="0")
+            return
+        try:
+            self.res_lbl.config(text=fmt(evaluate(self.expr)))
+        except Exception:
+            pass  # abhi likh rahe hain
+
+    # ---- actions ----
+    def add(self, v):
+        if self.just_eq:
+            if re.match(r"^[0-9.πe]$|^[a-z√]", v):
+                self.expr = ""
+            self.just_eq = False
+        self.expr += v
+        self.show()
+
+    def equals(self):
+        if not self.expr:
+            return
+        try:
+            r = evaluate(self.expr)
+        except Exception as err:
+            self.show(str(err))
+            return
+        self.history.insert(0, (self.expr, fmt(r)))
+        state["ans"] = r
+        self.expr_lbl.config(text=self.expr + " =")
+        self.res_lbl.config(text=fmt(r), fg=TEXT, font=("Segoe UI", 28, "bold"))
+        self.just_eq = True
+        self.hist_box.delete(0, "end")
+        for e, res in self.history[:30]:
+            self.hist_box.insert("end", f"{e}  =  {res}")
+
+    def recall(self, _event=None):
+        sel = self.hist_box.curselection()
+        if sel:
+            self.expr = self.history[sel[0]][0]
+            self.just_eq = False
+            self.show()
+
+    def press(self, v):
+        if v == "=":
+            self.equals()
+        elif v == "ac":
+            self.expr, self.just_eq = "", False
+            self.show()
+        elif v == "bs":
+            if self.just_eq:
+                self.expr, self.just_eq = "", False
+            else:
+                self.expr = re.sub(r"(sin|cos|tan|asin|acos|atan|ln|log|√)\($|ans$|.$",
+                                   "", self.expr)
+            self.show()
+        elif v == "mode":
+            state["deg"] = not state["deg"]
+            self.mode_btn.config(text="DEG" if state["deg"] else "RAD")
+            self.show()
+        elif v == "mc":
+            state["mem"] = 0.0
+            self.mem_lbl.config(text="Memory: 0")
+        elif v == "mr":
+            self.add(fmt(state["mem"]))
+        elif v in ("m+", "m-"):
+            try:
+                x = evaluate(self.expr) if self.expr else state["ans"]
+                state["mem"] += x if v == "m+" else -x
+                self.mem_lbl.config(text="Memory: " + fmt(state["mem"]))
+            except Exception as err:
+                self.show(str(err))
+        else:
+            if self.just_eq and v in ("+", "−", "×", "÷", "^", "^2", "!"):
+                self.expr, self.just_eq = fmt(state["ans"]), False
+            self.add(v)
+
+    def on_key(self, event):
+        k = event.char
+        if k and k in "0123456789.+()^!%":
+            self.press(k)
+        elif k == "*":
+            self.press("×")
+        elif k == "/":
+            self.press("÷")
+        elif k == "-":
+            self.press("−")
+        elif event.keysym in ("Return", "KP_Enter") or k == "=":
+            self.press("=")
+        elif event.keysym == "BackSpace":
+            self.press("bs")
+        elif event.keysym == "Escape":
+            self.press("ac")
+
+
+if __name__ == "__main__":
+    Calculator().mainloop()

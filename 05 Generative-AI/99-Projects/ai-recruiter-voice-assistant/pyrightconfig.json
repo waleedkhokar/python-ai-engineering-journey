@@ -1,0 +1,8 @@
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "pythonVersion": "3.13",
+  "include": ["src", "tests"],
+  "extraPaths": ["src", "src/app"],
+  "pythonPath": ".venv/Scripts/python.exe"
+}

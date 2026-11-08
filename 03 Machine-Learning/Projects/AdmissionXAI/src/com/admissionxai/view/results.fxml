@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  AdmissionXAI - results.fxml
+  Standalone details window opened from MainController when a candidate
+  row is double-clicked. Contains exactly what used to live in main.fxml's
+  right-side panel: decision, confidence, SHAP bars, program recommendation,
+  and the rejection-email action.
+-->
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.admissionxai.controller.ResultController"
+      styleClass="details-panel"
+      prefWidth="540.0" prefHeight="660.0"
+      minWidth="480.0" minHeight="480.0"
+      spacing="14">
+
+    <padding>
+        <Insets top="24" right="22" bottom="24" left="20"/>
+    </padding>
+
+    <Label text="XAI Model Explanation" styleClass="section-heading"/>
+    <Label fx:id="lblSelectedStudent" text="No candidate selected" styleClass="section-subheading" wrapText="true"/>
+
+    <VBox styleClass="explanation-card" spacing="12">
+
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="MODEL DECISION" styleClass="card-micro-heading"/>
+                <Label fx:id="lblDecisionStatus" text="Pending Analysis" styleClass="decision-label-pending"/>
+            </VBox>
+            <VBox spacing="2" alignment="TOP_RIGHT">
+                <Label text="CONFIDENCE SCORE" styleClass="card-micro-heading"/>
+                <Label fx:id="lblConfidence" text="-- %" styleClass="confidence-value"/>
+            </VBox>
+        </HBox>
+
+        <Separator styleClass="card-separator"/>
+
+        <Label text="FEATURE CONTRIBUTIONS (SHAP)" styleClass="card-micro-heading"/>
+
+        <ScrollPane styleClass="shap-scroll" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <VBox fx:id="shapChartContainer" styleClass="shap-list" spacing="10">
+                <Label text="Run XAI Analysis to calculate SHAP feature contributions."
+                       styleClass="placeholder-text" wrapText="true"/>
+            </VBox>
+        </ScrollPane>
+
+    </VBox>
+
+    <!-- Program recommendation - shown only when Selected (toggled in controller) -->
+    <HBox fx:id="programInfoBox" styleClass="program-badge-row" alignment="CENTER"
+          visible="false" managed="false">
+        <Label text="Candidate added to selection list" styleClass="program-selection-msg"/>
+    </HBox>
+
+    <!-- Selection email action - shown only when Selected (toggled in controller) -->
+    <Button fx:id="btnSendSelectionEmail" text="Send Selection Email" onAction="#handleSendSelectionEmail"
+            styleClass="success-button" maxWidth="Infinity" visible="false" managed="false"/>
+
+    <!-- Rejection email action - shown only when Not Selected (toggled in controller) -->
+    <Button fx:id="btnSendEmail" text="Send Rejection Email" onAction="#handleSendEmail"
+            styleClass="danger-button" maxWidth="Infinity" visible="false" managed="false"/>
+
+</VBox>

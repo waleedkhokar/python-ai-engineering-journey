@@ -1,0 +1,36 @@
+document_id,title,document_type,jurisdiction,authority,source_name,source_url,priority
+PK-001,"Constitution of the Islamic Republic of Pakistan, 1973",Constitution,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator9d8e2ecc414c6d3371ac41114b61a2c4.pdf,High
+PK-002,"Pakistan Penal Code, 1860",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administratoracbdabf2b79c8956d6ea4804fcceb92d.pdf,High
+PK-003,"Code of Criminal Procedure, 1898",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator7db1e56f0f1d39a6e67573ec6b0944e2.pdf,High
+PK-004,"Code of Civil Procedure, 1908",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator6598dabbad120033d4d42d717dcf9755.pdf,High
+PK-005,"Contract Act, 1872",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,High
+PK-006,"Qanun-e-Shahadat Order, 1984",Federal Law,Federal,Government of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,High
+PK-007,"Specific Relief Act, 1877",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administratorf257754bbb3c6863d879492bc8cd8f6e.pdf,High
+PK-008,"Limitation Act, 1908",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator3294e35255f255ea96b3356091fb4844.pdf,High
+PK-009,"Transfer of Property Act, 1882",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,High
+PK-010,"Registration Act, 1908",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator0f29bc9f1e3dfed37c0034eed1e29d53.pdf,High
+PK-011,"Partnership Act, 1932",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,Medium
+PK-012,"Companies Act, 2017",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,High
+PK-013,"Sale of Goods Act, 1930",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,Medium
+PK-014,"Arbitration Act, 1940",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/english/,Medium
+PK-015,"Anti-Money Laundering Act, 2010",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator47c7a5354061a54634a6246d2046ddcf.pdf,High
+PK-016,"Anti-Terrorism Act, 1997",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administratora8658ee078a7253e456379e890652a2a.pdf,Medium
+PK-017,"Protection against Harassment of Women at the Workplace Act, 2010",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administratorc22e81f4add9ea3dc023086953ca2b4f.pdf,Medium
+PK-018,"Electronic Transactions Ordinance, 2002",Federal Ordinance,Federal,Government of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administratordbc98dd49f2df3b1d07bb986dcceb9a3.pdf,Medium
+PK-019,"Juvenile Justice System Act, 2018",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator01c49d3cff67abf97e39c2e1d6dacc43.pdf,Medium
+PK-020,"Legal Aid and Justice Authority Act, 2020",Federal Act,Federal,Parliament of Pakistan,Pakistan Code,https://pakistancode.gov.pk/pdffiles/administrator11e683b2b54d0251e10b6fa8181d73e4.pdf,High
+SD-001,"Sindh Civil Courts Ordinance, 1962",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,High
+SD-002,"Sindh Local Government Act, 2013",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,High
+SD-003,"Sindh Rented Premises Ordinance, 1979",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,High
+SD-004,"Sindh Public Property (Removal of Encroachment) Act, 2010",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-005,"Sindh Environmental Protection Act, 2014",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-006,"Sindh Consumer Protection Act, 2014",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-007,"Sindh Employees' Social Security Act, 2016",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-008,"Sindh Domestic Violence (Prevention and Protection) Act, 2013",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-009,"Sindh Child Marriage Restraint Act, 2013",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SD-010,"Sindh Transparency and Right to Information Act, 2016",Sindh Law,Sindh,Government of Sindh,Sindh Code,https://www.sindhlaws.gov.pk/SindhIndex.aspx,Medium
+SHC-001,Sindh High Court Judgment — dataset placeholder 01,Court Judgment,Sindh,Sindh High Court,SHC Case Law,https://caselaw.shc.gov.pk/,High
+SHC-002,Sindh High Court Judgment — dataset placeholder 02,Court Judgment,Sindh,Sindh High Court,SHC Case Law,https://caselaw.shc.gov.pk/,High
+SHC-003,Sindh High Court Judgment — dataset placeholder 03,Court Judgment,Sindh,Sindh High Court,SHC Case Law,https://caselaw.shc.gov.pk/,High
+SHC-004,Sindh High Court Judgment — dataset placeholder 04,Court Judgment,Sindh,Sindh High Court,SHC Case Law,https://caselaw.shc.gov.pk/,High
+SHC-005,Sindh High Court Judgment — dataset placeholder 05,Court Judgment,Sindh,Sindh High Court,SHC Case Law,https://caselaw.shc.gov.pk/,High

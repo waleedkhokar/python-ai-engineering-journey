@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickBill Studio – Receipt Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --ink:#f4f6ff; --muted:rgba(226,230,255,.62);
+    --glass:rgba(255,255,255,.09); --glass-strong:rgba(255,255,255,.14);
+    --line:rgba(255,255,255,.2);
+    --accent:#8b8cff; --accent-2:#35d6c0; --ok:#4ade80; --err:#ff7a8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;color:var(--ink);min-height:100vh;
+    display:flex;flex-direction:column;overflow-x:hidden;
+    background:#0b0d24;
+    padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  /* Ambient colour behind the glass */
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;
+    background:radial-gradient(120% 90% at 50% 0%,#1c1f5c 0%,#0b0d24 60%)}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.75}
+  .orb.a{width:480px;height:480px;background:#5b5cf0;top:-120px;left:-100px}
+  .orb.b{width:420px;height:420px;background:#12b5a6;bottom:-140px;right:-80px;opacity:.55}
+  .orb.c{width:300px;height:300px;background:#c04bd6;top:45%;left:48%;opacity:.35}
+
+  .glass{
+    background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+    border:1px solid var(--line);border-radius:28px;
+    backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.28);
+  }
+
+  header{padding:18px 24px}
+  .nav{max-width:1080px;margin:0 auto;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .brand i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:16px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px -6px rgba(139,140,255,.8)}
+  .status{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--muted);
+    padding:7px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+  main{flex:1;max-width:1080px;width:100%;margin:0 auto;padding:24px 20px 40px;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+  .panel{padding:36px}
+  h1{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .sub{margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:46ch}
+
+  .toast{display:none;margin-top:22px;padding:14px 16px;border-radius:16px;font-size:14px;gap:12px;align-items:flex-start;
+    background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.4)}
+  .toast.err{background:rgba(255,122,138,.14);border-color:rgba(255,122,138,.45)}
+  .toast.show{display:flex;animation:pop .35s ease}
+  .toast i{margin-top:2px;color:var(--ok)} .toast.err i{color:var(--err)}
+  .toast b{display:block;margin-bottom:2px}
+  .toast span{color:var(--muted);line-height:1.5}
+  @keyframes pop{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+
+  form{margin-top:26px;display:grid;gap:18px}
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px}
+  label small{color:var(--muted);font-weight:500}
+  .field{position:relative}
+  .field>i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
+  .field>i.wa{color:var(--accent-2);font-size:17px}
+  input,select{
+    width:100%;height:52px;padding:0 16px 0 44px;border-radius:16px;font:inherit;font-size:15px;color:var(--ink);
+    background:rgba(8,10,34,.35);border:1px solid var(--line);outline:none;
+    transition:border-color .2s,box-shadow .2s,background .2s;appearance:none;-webkit-appearance:none}
+  input::placeholder{color:rgba(226,230,255,.35)}
+  input:focus,select:focus{border-color:var(--accent);background:rgba(8,10,34,.5);box-shadow:0 0 0 4px rgba(139,140,255,.22)}
+  select{cursor:pointer;padding-right:40px}
+  select option{background:#161943;color:#fff}
+  .caret{left:auto!important;right:16px}
+  input[type=number]::-webkit-inner-spin-button{display:none}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  button{
+    margin-top:6px;height:56px;border:0;border-radius:18px;cursor:pointer;font:inherit;font-weight:700;font-size:15.5px;color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,#7476ff,#4f8cff 55%,#2fd0c0);
+    box-shadow:0 14px 30px -10px rgba(95,120,255,.85),inset 0 1px 0 rgba(255,255,255,.4);
+    transition:transform .2s,box-shadow .2s,filter .2s}
+  button:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.08)}
+  button:active:not(:disabled){transform:translateY(0)}
+  button:disabled{opacity:.75;cursor:wait}
+  :focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  /* Receipt */
+  .ticket{padding:30px 28px 26px;position:relative}
+  .ticket::before,.ticket::after{content:"";position:absolute;top:150px;width:24px;height:24px;border-radius:50%;background:#0f1230;
+    border:1px solid var(--line)}
+  .ticket::before{left:-13px;clip-path:inset(0 0 0 50%)} .ticket::after{right:-13px;clip-path:inset(0 50% 0 0)}
+  .t-head{display:flex;justify-content:space-between;align-items:flex-start}
+  .t-head p{font-size:13px;color:var(--muted);font-weight:600}
+  .t-head h3{font-size:19px;font-weight:800;margin-top:4px;letter-spacing:-.01em}
+  .check{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:18px;color:#06281f;
+    background:linear-gradient(135deg,#6ef2c4,#35d6c0);box-shadow:0 8px 22px -6px rgba(53,214,192,.8)}
+  .total{margin:26px 0 22px;padding-bottom:26px;border-bottom:2px dashed var(--line)}
+  .total p{font-size:13px;color:var(--muted);font-weight:600}
+  .total strong{display:block;margin-top:6px;font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1;
+    background:linear-gradient(135deg,#fff,#b9bcff 60%,#7ff0dd);-webkit-background-clip:text;background-clip:text;color:transparent}
+  dl{display:grid;gap:14px;font-size:14px}
+  dl div{display:flex;justify-content:space-between;gap:16px}
+  dt{color:var(--muted)} dd{font-weight:600;text-align:right;word-break:break-word}
+  dd.empty{color:rgba(226,230,255,.35);font-weight:500}
+  .foot{margin-top:24px;padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:10px;line-height:1.4}
+  .foot i{color:var(--accent-2);font-size:16px}
+
+  footer{text-align:center;padding:22px;font-size:12.5px;color:var(--muted)}
+
+  @media(max-width:860px){
+    main{grid-template-columns:1fr;gap:22px}
+    .panel{padding:26px 22px} h1{font-size:24px}
+    .status span.t{display:none}
+  }
+  @media(max-width:420px){.row{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+<header>
+  <div class="nav glass" style="border-radius:20px">
+    <div class="brand"><i class="fa-solid fa-file-invoice-dollar"></i> FastWhatsappAgents</div>
+    <div class="status"><span class="dot"></span><span class="t">n8n connected</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="panel glass" aria-labelledby="title">
+    <h1 id="title">Create a new receipt</h1>
+    <p class="sub">Enter the payment details. The receipt is sent to your customer on WhatsApp right away.</p>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <i class="fa-solid fa-circle-check"></i>
+      <div><b id="toastTitle">Receipt sent</b><span id="toastMsg">Your customer will get it on WhatsApp in a moment.</span></div>
+    </div>
+
+    <form id="receiptForm" novalidate>
+      <div>
+        <label for="clientName">Customer name</label>
+        <div class="field"><i class="fa-solid fa-user"></i>
+          <input type="text" id="clientName" required placeholder="Waleed Khokhar" autocomplete="off"></div>
+      </div>
+      <div>
+        <label for="whatsapp">WhatsApp number <small>include country code, digits only</small></label>
+        <div class="field"><i class="fa-brands fa-whatsapp wa"></i>
+          <input type="tel" id="whatsapp" required inputmode="numeric" placeholder="03191402404" autocomplete="off"></div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="service">Service</label>
+          <div class="field"><i class="fa-solid fa-briefcase"></i>
+            <select id="service">
+              <option value="AI Product">AI Product</option>
+               <option value="Website Development">Web development</option>
+              <option value="AI Agents">Gym membership</option>
+              <option value="Social Media Marketing">Social media marketing</option>
+              <option value="Consultation Fee">Consultation fee</option>
+            </select><i class="fa-solid fa-chevron-down caret"></i></div>
+        </div>
+        <div>
+          <label for="amount">Amount paid</label>
+          <div class="field"><i class="fa-solid fa-dollar-sign"></i>
+            <input type="number" id="amount" required min="0" step="0.01" placeholder="150" inputmode="decimal"></div>
+        </div>
+      </div>
+      <button type="submit" id="submitBtn"><span id="btnText">Send receipt</span><i class="fa-solid fa-paper-plane" id="btnIcon"></i></button>
+    </form>
+  </section>
+
+  <aside aria-label="Receipt preview">
+    <div class="ticket glass">
+      <div class="t-head">
+        <div><p id="prevId">Receipt</p><h3>Payment received</h3></div>
+        <div class="check"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <div class="total"><p>Total paid</p><strong>$<span id="prevAmount">0.00</span></strong></div>
+      <dl>
+        <div><dt>Customer</dt><dd id="prevName" class="empty">Not entered yet</dd></div>
+        <div><dt>WhatsApp</dt><dd id="prevPhone" class="empty">Not entered yet</dd></div>
+        <div><dt>Service</dt><dd id="prevService">Website Development</dd></div>
+        <div><dt>Date</dt><dd id="prevDate"></dd></div>
+      </dl>
+      <div class="foot"><i class="fa-brands fa-whatsapp"></i> This preview updates as you type and matches what your customer receives.</div>
+    </div>
+  </aside>
+</main>
+
+<footer>&copy; 2026 FastWhatsappAgents Studio</footer>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const form = $('receiptForm'), submitBtn = $('submitBtn'), btnText = $('btnText'), btnIcon = $('btnIcon'), toast = $('toast');
+  const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook-test/whatsapp';
+
+  const newId = () => 'INV-' + Math.floor(100000 + Math.random() * 900000);
+  let receiptId = newId();
+  $('prevId').textContent = 'Receipt ' + receiptId;
+  $('prevDate').textContent = new Date().toLocaleDateString('en-US', {day:'numeric', month:'short', year:'numeric'});
+
+  function setText(el, value, fallback){
+    el.textContent = value || fallback;
+    el.classList.toggle('empty', !value);
+  }
+  $('clientName').addEventListener('input', e => setText($('prevName'), e.target.value.trim(), 'Not entered yet'));
+  $('whatsapp').addEventListener('input', e => {
+    e.target.value = e.target.value.replace(/[^\d]/g, '');
+    setText($('prevPhone'), e.target.value ? '+' + e.target.value : '', 'Not entered yet');
+  });
+  $('service').addEventListener('change', e => $('prevService').textContent = e.target.value);
+  $('amount').addEventListener('input', e => {
+    const n = parseFloat(e.target.value);
+    $('prevAmount').textContent = isNaN(n) ? '0.00' : n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  });
+
+  let hideTimer;
+  function showToast(ok, title, msg){
+    toast.className = 'toast show' + (ok ? '' : ' err');
+    toast.querySelector('i').className = ok ? 'fa-solid fa-circle-check' : 'fa-solid fa-circle-exclamation';
+    $('toastTitle').textContent = title; $('toastMsg').textContent = msg;
+    clearTimeout(hideTimer); hideTimer = setTimeout(() => toast.classList.remove('show'), 7000);
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending…';
+    btnIcon.className = 'fa-solid fa-spinner fa-spin';
+
+    const payload = {
+      clientName: $('clientName').value.trim(),
+      whatsapp: $('whatsapp').value,
+      service: $('service').value,
+      amount: $('amount').value,
+      receiptId
+    };
+
+    try {
+      const res = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        showToast(true, 'Receipt sent', 'Your customer will get it on WhatsApp in a moment.');
+        form.reset();
+        ['prevAmount'].forEach(i => $(i).textContent = '0.00');
+        setText($('prevName'), '', 'Not entered yet'); setText($('prevPhone'), '', 'Not entered yet');
+        $('prevService').textContent = $('service').value;
+        receiptId = newId(); $('prevId').textContent = 'Receipt ' + receiptId;
+      } else {
+        showToast(false, 'Receipt not sent', 'The n8n workflow rejected the data. Check the workflow and try again.');
+      }
+    } catch (err) {
+      showToast(false, 'Can’t reach n8n', 'Make sure n8n is running and the webhook URL is correct, then try again.');
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = 'Send receipt';
+      btnIcon.className = 'fa-solid fa-paper-plane';
+    }
+  });
+</script>
+</body>
+</html>

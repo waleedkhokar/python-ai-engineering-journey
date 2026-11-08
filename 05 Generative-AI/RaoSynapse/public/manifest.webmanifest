@@ -1,0 +1,10 @@
+{
+  "name": "RaoSynapse",
+  "short_name": "RaoSynapse",
+  "description": "Think with AI. Build on it together.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080B12",
+  "theme_color": "#080B12",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

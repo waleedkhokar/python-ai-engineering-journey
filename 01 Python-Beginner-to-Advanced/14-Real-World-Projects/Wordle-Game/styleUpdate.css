@@ -1,0 +1,153 @@
+body {
+    background-image: url(./bg-gamer.jpg);
+    background-size: auto;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+#disp {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#dark,
+#bright {
+    width: 60px;
+    border-radius: 30px;
+    color: rgba(255, 255, 255, 0.904);
+    background-color: lightgreen;
+    display: inline-block;
+    transition: 0.3s;
+    /* Simplified transition property */
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px 10px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 13%;
+    right: 30%;
+}
+
+#bright {
+    background-color: lightseagreen;
+    left: 30%;
+}
+
+#title {
+    color: rgb(113, 245, 113);
+    font-family: cursive;
+    font-size: 46px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    ;
+}
+
+#board {
+    width: 350px;
+    height: 420px;
+    margin: 0 auto;
+    margin-top: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid goldenrod;
+    padding: 10px 10px 10px 13px;
+    background-color: rgba(222, 184, 135, 0.527);
+    box-shadow: 30px 45px 20px rgba(104, 104, 104, 0.658);
+    border-radius: 10px;
+}
+
+.tile {
+    border: 2px solid goldenrod;
+    width: 60px;
+    height: 60px;
+    margin: 2.5px;
+    color: blue;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+}
+
+.tile:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.correct,
+.present,
+.absent {
+    color: white;
+    border-color: white;
+}
+
+.correct {
+    background-color: #89cc83;
+}
+
+.present {
+    background-color: #C9B458;
+}
+
+.absent {
+    background-color: #969696;
+}
+
+.keyboard-row {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3px;
+
+
+}
+
+.key-tile,
+.enter-key-tile {
+    width: 36px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid rgb(143, 143, 241);
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    border-radius: 6px;
+}
+
+.key-tile:hover,
+.enter-key-tile:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.enter-key-tile {
+    width: 76px;
+    /* Adjusted width */
+    border: 1px solid rgb(63, 62, 62);
+}
+
+#answer {
+    color: red;
+    position: absolute;
+    left: 70%;
+    bottom: 69%;
+    font-size: 50px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}

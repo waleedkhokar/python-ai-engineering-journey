@@ -86,6 +86,12 @@ build/
 npm-debug.log*
 yarn-error.log*
 
+# Local application data and TypeScript build state
+*.db
+*.db-shm
+*.db-wal
+*.tsbuildinfo
+
 .env
 node_modules/
 .venv/

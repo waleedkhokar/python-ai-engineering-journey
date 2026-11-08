@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+*.db
+*.db-shm
+*.db-wal
+*.tsbuildinfo
+.preview-tests/
+.ui-review/
+playwright-report/
+test-results/
+.DS_Store

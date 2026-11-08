@@ -1,0 +1,6 @@
+{
+  "name": "FormRahber",
+  "description": "AI-powered official form reader and step-by-step guide supporting English, Urdu, and Roman Urdu.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

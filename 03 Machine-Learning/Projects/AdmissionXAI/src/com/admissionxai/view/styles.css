@@ -1,0 +1,413 @@
+
+* {
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.root-pane {
+    -fx-background-color: #101A2B;
+}
+
+/* =============================== TOP BAR =============================== */
+
+.top-bar {
+    -fx-background-color: #101A2B;
+    -fx-border-color: transparent transparent #24314A transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.app-title {
+    -fx-font-family: "Fraunces", "Source Serif Pro", Georgia, serif;
+    -fx-font-size: 21px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FAF6ED;
+}
+
+.app-title-subscript {
+    -fx-font-size: 11px;
+    -fx-text-fill: #C9A227;
+}
+
+.app-subtitle {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #E7E1D2;
+}
+
+/* ================================ SIDEBAR ================================ */
+
+.sidebar {
+    -fx-background-color: #0C1522;
+    -fx-border-color: transparent #24314A transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-heading {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #C9A227;
+    -fx-letter-spacing: 1.4px;
+    -fx-padding: 0 0 12 0;
+}
+
+.sidebar-micro-heading {
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #5D6C86;
+    -fx-letter-spacing: 1px;
+    -fx-padding: 4 0 0 0;
+}
+
+.sidebar-block {
+    -fx-padding: 0 0 18 0;
+}
+
+.file-path-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #C7CEDB;
+    -fx-background-color: #16223A;
+    -fx-background-radius: 4px;
+    -fx-padding: 8 10 8 10;
+    -fx-border-color: #24314A;
+    -fx-border-radius: 4px;
+    -fx-border-width: 1px;
+}
+
+.sidebar-separator .line {
+    -fx-border-color: #24314A;
+    -fx-border-width: 0.5px;
+}
+
+.sidebar-stat-row {
+    -fx-padding: 4 0 0 0;
+}
+
+.sidebar-stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #9AA6BC;
+}
+
+.sidebar-stat-value {
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #FAF6ED;
+}
+
+/* ================================ BUTTONS ================================ */
+
+.primary-button {
+    -fx-background-color: #1F6F54;
+    -fx-text-fill: #FAF6ED;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 4px;
+    -fx-padding: 13 18 13 18;
+    -fx-cursor: hand;
+}
+.primary-button:hover {
+    -fx-background-color: #256E52;
+}
+.primary-button:pressed {
+    -fx-background-color: #175943;
+}
+.primary-button:disabled {
+    -fx-background-color: #2E3A34;
+    -fx-text-fill: #7C8A82;
+    -fx-opacity: 0.85;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FAF6ED;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 4px;
+    -fx-border-color: #C9A227;
+    -fx-border-width: 1.4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 9 14 9 14;
+    -fx-cursor: hand;
+}
+.secondary-button:hover {
+    -fx-background-color: rgba(201,162,39,0.12);
+}
+.secondary-button:pressed {
+    -fx-background-color: rgba(201,162,39,0.22);
+}
+
+.danger-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #B14A2E;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 4px;
+    -fx-border-color: #B14A2E;
+    -fx-border-width: 1.2px;
+    -fx-border-radius: 4px;
+    -fx-padding: 9 14 9 14;
+    -fx-cursor: hand;
+}
+.danger-button:hover {
+    -fx-background-color: rgba(177,74,46,0.10);
+}
+.danger-button:pressed {
+    -fx-background-color: rgba(177,74,46,0.20);
+}
+
+.success-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1F6F54;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 4px;
+    -fx-border-color: #1F6F54;
+    -fx-border-width: 1.2px;
+    -fx-border-radius: 4px;
+    -fx-padding: 9 14 9 14;
+    -fx-cursor: hand;
+}
+.success-button:hover {
+    -fx-background-color: rgba(31,111,84,0.10);
+}
+.success-button:pressed {
+    -fx-background-color: rgba(31,111,84,0.20);
+}
+
+/* ============================== CENTER PANEL ============================== */
+
+.center-panel {
+    -fx-background-color: #101A2B;
+}
+
+.section-heading {
+    -fx-font-family: "Fraunces", "Source Serif Pro", Georgia, serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #FAF6ED;
+}
+
+.section-subheading {
+    -fx-font-size: 11.5px;
+    -fx-text-fill: #7C8AA3;
+    -fx-font-style: italic;
+}
+
+.search-field {
+    -fx-background-color: #16223A;
+    -fx-text-fill: #FAF6ED;
+    -fx-prompt-text-fill: #5D6C86;
+    -fx-background-radius: 4px;
+    -fx-border-color: #24314A;
+    -fx-border-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-padding: 7 10 7 10;
+    -fx-font-size: 12px;
+}
+.search-field:focused {
+    -fx-border-color: #C9A227;
+}
+
+/* =============================== TABLE VIEW =============================== */
+
+.data-table {
+    -fx-background-color: #FAF6ED;
+    -fx-background-radius: 6px;
+    -fx-border-color: #DCD3BC;
+    -fx-border-radius: 6px;
+}
+
+.data-table .column-header-background {
+    -fx-background-color: #101A2B;
+    -fx-background-radius: 6px 6px 0 0;
+}
+
+.data-table .column-header,
+.data-table .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #24314A transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 38px;
+}
+
+.data-table .column-header .label {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #C9A227;
+    -fx-letter-spacing: 0.6px;
+}
+
+.data-table .table-row-cell {
+    -fx-background-color: #FAF6ED;
+    -fx-border-color: transparent transparent #E9E1CC transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.data-table .table-row-cell:odd {
+    -fx-background-color: #F4EEDF;
+}
+
+.data-table .table-row-cell:hover {
+    -fx-background-color: #EFE6CC;
+}
+
+.data-table .table-row-cell:selected {
+    -fx-background-color: #E4D9B4;
+}
+
+.data-table .table-cell {
+    -fx-text-fill: #232323;
+    -fx-font-size: 12.5px;
+    -fx-padding: 9 12 9 12;
+}
+
+.data-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: #101A2B;
+    -fx-font-weight: 600;
+}
+
+.data-table .placeholder .label {
+    -fx-text-fill: #8A8264;
+    -fx-font-size: 13px;
+}
+
+/* ============================== PANEL DIVIDER ============================== */
+
+.panel-divider .line {
+    -fx-border-color: #24314A;
+    -fx-border-width: 0.6px;
+}
+
+/* ============================== DETAILS PANEL ============================== */
+
+.details-panel {
+    -fx-background-color: #0C1522;
+}
+
+.explanation-card {
+    -fx-background-color: #FAF6ED;
+    -fx-background-radius: 6px;
+    -fx-border-color: #DCD3BC;
+    -fx-border-radius: 6px;
+    -fx-padding: 16;
+}
+
+.card-micro-heading {
+    -fx-font-size: 9.5px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #8A8264;
+    -fx-letter-spacing: 1px;
+}
+
+.card-separator .line {
+    -fx-border-color: #DCD3BC;
+    -fx-border-width: 0.5px;
+}
+
+/* Default/idle decision states. NOTE: MainController overrides
+   -fx-text-fill inline once a decision is known - these are the fallback
+   colors shown before any analysis has run or if inline style is absent. */
+.decision-label-pending {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #B45309;
+}
+
+.confidence-value {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #232323;
+}
+
+/* ================================ SHAP BARS ================================ */
+
+.shap-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.shap-scroll .viewport {
+    -fx-background-color: transparent;
+}
+.shap-scroll .scroll-bar:horizontal {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+.shap-scroll .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+}
+
+.shap-list {
+    -fx-padding: 2 4 2 0;
+}
+
+.placeholder-text {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #6B7280;
+    -fx-font-style: italic;
+}
+
+/* These are provided for ShapChartBuilder.java to reuse if/when its
+   inline -fx-style strings are swapped for styleClass references. */
+.shap-feature-label {
+    -fx-font-size: 11.5px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #4A4A4A;
+}
+.shap-bar-track {
+    -fx-background-color: #EDE6D3;
+    -fx-background-radius: 3px;
+}
+.shap-bar-fill-positive {
+    -fx-background-color: #1F6F54;
+    -fx-background-radius: 3px;
+}
+.shap-bar-fill-negative {
+    -fx-background-color: #B14A2E;
+    -fx-background-radius: 3px;
+}
+.shap-value-positive {
+    -fx-font-size: 11.5px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #1F6F54;
+}
+.shap-value-negative {
+    -fx-font-size: 11.5px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #B14A2E;
+}
+
+/* ========================= PROGRAM RECOMMENDATION ========================= */
+
+.program-badge-row {
+    -fx-background-color: rgba(201,162,39,0.16);
+    -fx-background-radius: 6px;
+    -fx-border-color: #C9A227;
+    -fx-border-width: 1.2px;
+    -fx-border-radius: 6px;
+    -fx-padding: 12 14 12 14;
+}
+
+.card-micro-heading-on-gold {
+    -fx-font-size: 9.5px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #8A6A10;
+    -fx-letter-spacing: 1px;
+}
+
+.program-name {
+    -fx-font-family: "Fraunces", "Source Serif Pro", Georgia, serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #101A2B;
+}
+
+.program-confidence {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #101A2B;
+}
+
+.program-selection-msg {
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #FAF6ED;
+}

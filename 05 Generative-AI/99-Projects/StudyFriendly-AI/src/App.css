@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #eef3ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #1f3c88;
+  font-size: 60px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.date {
+  text-align: center;
+  color: #777;
+  margin-bottom: 35px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.card h2 {
+  text-align: center;
+  color: #1f3c88;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+}
+
+textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #1f3c88;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  background: #15306f;
+  transform: translateY(-2px);
+}
+
+.assignment-box {
+  border: 1px solid #ddd;
+  border-left: 6px solid #1f3c88;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  transition: .3s;
+}
+
+.assignment-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0,0,0,.1);
+}
+
+.assignment-box h3 {
+  color: #1f3c88;
+  margin-bottom: 12px;
+}
+
+.assignment-box p {
+  margin: 8px 0;
+}
+
+.ai-response {
+  margin-top: 25px;
+  background: #eef4ff;
+  padding: 20px;
+  border-left: 6px solid #1f3c88;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+
+.footer {
+  text-align: center;
+  color: #666;
+  margin: 40px 0;
+  line-height: 30px;
+}
+
+@media(max-width:768px){
+
+.container{
+padding:15px;
+}
+
+h1{
+font-size:42px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.card{
+padding:20px;
+}
+
+button{
+font-size:16px;
+}
+
+}

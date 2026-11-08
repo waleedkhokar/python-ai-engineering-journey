@@ -1,0 +1,30 @@
+Senior Python Developer - TechCorp Inc.
+
+About the Role:
+We are looking for a Senior Python Developer to join our growing platform team.
+You will build scalable backend systems and APIs.
+
+Responsibilities:
+- Design and implement REST APIs and microservices
+- Work with PostgreSQL and other relational databases
+- Deploy and operate applications on AWS
+- Review code and mentor junior developers
+
+Requirements:
+- 5+ years of professional Python development experience
+- Hands-on experience with FastAPI or Django
+- Strong SQL and database design skills
+- Experience with Docker and Kubernetes
+- Proficiency with AWS services such as Lambda, EC2, and RDS
+
+Nice to Have:
+- Experience with GraphQL
+- Knowledge of MongoDB or Redis
+- Machine learning background
+
+Benefits:
+- Competitive salary: $120,000 - $160,000
+- Remote-friendly work options
+- Health insurance and a professional development budget
+
+Location: Remote (US)

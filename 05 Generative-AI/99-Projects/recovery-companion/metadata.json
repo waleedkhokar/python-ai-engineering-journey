@@ -1,0 +1,6 @@
+{
+  "name": "Recovery Companion",
+  "description": "Turns complex hospital discharge paperwork into clear, guided recovery plans with medication timelines, warning sign alerts, and AI explanations grounded in source documents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

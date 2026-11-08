@@ -1,0 +1,32 @@
+JOHN DOE
+john.doe@example.com | +1-234-567-8900 | linkedin.com/in/johndoe | github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Python developer with 5+ years building REST APIs and data-driven web applications.
+
+EXPERIENCE
+Senior Python Developer | TechCorp Inc. | Jan 2021 - Present
+- Developed 10+ REST APIs serving 100K+ daily users
+- Improved database query performance by 40%
+- Built CI/CD pipelines using GitHub Actions and Docker
+
+Python Developer | StartupXYZ | Jun 2018 - Dec 2020
+- Built full-stack web applications using Django and React
+- Reduced deployment time from 2 hours to 15 minutes
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | Graduated 2018
+
+SKILLS
+Python, JavaScript, SQL, FastAPI, Django, React, PostgreSQL, MySQL, Redis, AWS, Docker, Git, REST APIs
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate | 2023
+Docker Certified Associate | 2022
+
+PROJECTS
+Resume Analyzer - AI-powered resume analysis tool
+- Implemented NLP parsing with spaCy and sentence-transformers
+- Built a FastAPI backend and React frontend
+- Link: github.com/johndoe/resume-analyzer

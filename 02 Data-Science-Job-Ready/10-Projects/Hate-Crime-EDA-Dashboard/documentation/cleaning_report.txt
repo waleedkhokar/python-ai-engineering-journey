@@ -1,0 +1,28 @@
+DATA CLEANING REPORT
+====================
+
+Dataset file used exactly as required: data/hate_crime.csv
+
+Rows before cleaning: 51
+Rows after cleaning: 51
+
+Columns before cleaning: 12
+Columns after cleaning: 15
+
+Missing values before cleaning: 8
+Missing values after cleaning: 0
+
+Duplicate rows before cleaning: 0
+Duplicate rows after cleaning: 0
+
+Cleaning and preprocessing steps:
+1. Loaded the raw, uncleaned CSV dataset.
+2. Standardized column names for coding consistency.
+3. Cleaned text values and state names.
+4. Removed duplicate rows.
+5. Converted numeric-looking columns where possible.
+6. Filled missing numeric values with the median.
+7. Filled missing text values with the mode.
+8. Replaced invalid negative numeric values with 0.
+9. Added engineered features: income_group, hate_crime_level, and sequence.
+10. Saved cleaned data as data/hate_crime_cleaned.csv.
