@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NewsGuard | News Classification</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="/" class="brand">
+
+                <span class="brand-mark">
+                    NG
+                </span>
+
+                <span class="brand-text">
+                    <strong>NewsGuard</strong>
+                    <small>News Classification System</small>
+                </span>
+
+            </a>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Ready
+            </div>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <p class="eyebrow">
+                    NEWS CLASSIFICATION
+                </p>
+
+                <h1>
+                    Check a news article
+                    <br>
+                    <span>before you trust it.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Enter a headline and article content to receive
+                    a prediction from the trained news classification model.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAIN WORKSPACE
+        ========================== -->
+
+        <section class="workspace">
+
+            <div class="container">
+
+                <div class="workspace-grid">
+
+
+                    <!-- =========================
+                         INPUT PANEL
+                    ========================== -->
+
+                    <section class="panel input-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <p class="section-number">
+                                    01
+                                </p>
+
+                                <h2>
+                                    News information
+                                </h2>
+
+                                <p class="panel-subtitle">
+                                    Provide the headline and article content
+                                    for analysis.
+                                </p>
+
+                            </div>
+
+                            <span class="required-note">
+                                * Required
+                            </span>
+
+                        </div>
+
+
+                        <form id="newsForm" novalidate>
+
+
+                            <!-- TITLE -->
+
+                            <div class="field">
+
+                                <div class="label-row">
+
+                                    <label for="title">
+                                        News headline
+                                    </label>
+
+                                    <span id="titleCount">
+                                        0 / 300
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    maxlength="300"
+                                    autocomplete="off"
+                                    placeholder="Enter the headline..."
+                                >
+
+                            </div>
+
+
+                            <!-- ARTICLE -->
+
+                            <div class="field">
+
+                                <div class="label-row">
+
+                                    <label for="text">
+                                        Article content
+                                    </label>
+
+                                    <span id="textCount">
+                                        0 words
+                                    </span>
+
+                                </div>
+
+
+                                <textarea
+                                    id="text"
+                                    name="text"
+                                    rows="11"
+                                    placeholder="Paste or type the article content here..."
+                                ></textarea>
+
+
+                                <div class="text-meta">
+
+                                    <span id="characterCount">
+                                        0 characters
+                                    </span>
+
+                                    <span id="readingTime">
+                                        Less than 1 min read
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ACTIONS -->
+
+                            <div class="actions">
+
+                                <button
+                                    type="button"
+                                    class="button button-light"
+                                    id="exampleBtn"
+                                >
+                                    Use Example
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="button button-light"
+                                    id="clearBtn"
+                                >
+                                    Clear
+                                </button>
+
+
+                                <button
+                                    type="submit"
+                                    class="button button-primary"
+                                    id="analyzeBtn"
+                                >
+
+                                    <span id="btnText">
+                                        Analyze Article
+                                    </span>
+
+                                    <span class="button-arrow">
+                                        →
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+
+                        <!-- ERROR -->
+
+                        <div
+                            class="alert"
+                            id="errorMessage"
+                        >
+
+                            <div class="alert-symbol">
+                                !
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Unable to analyze
+                                </strong>
+
+                                <p id="errorText"></p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =========================
+                         RESULT PANEL
+                    ========================== -->
+
+                    <aside class="panel result-panel">
+
+
+                        <div class="panel-heading">
+
+                            <div>
+
+                                <p class="section-number">
+                                    02
+                                </p>
+
+                                <h2>
+                                    Analysis result
+                                </h2>
+
+                                <p class="panel-subtitle">
+                                    Your model prediction will appear here.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMPTY STATE -->
+
+                        <div
+                            class="empty-state"
+                            id="emptyState"
+                        >
+
+                            <div class="empty-icon">
+                                ?
+                            </div>
+
+                            <h3>
+                                Waiting for an article
+                            </h3>
+
+                            <p>
+                                Submit a headline and article to see
+                                the classification result.
+                            </p>
+
+                        </div>
+
+
+                        <!-- RESULT -->
+
+                        <div
+                            class="result-content"
+                            id="resultSection"
+                        >
+
+                            <div class="result-banner">
+
+                                <div
+                                    class="result-symbol"
+                                    id="resultIcon"
+                                >
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <span class="result-kicker">
+                                        MODEL PREDICTION
+                                    </span>
+
+                                    <h3 id="resultTitle">
+                                        Result
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <p
+                                class="result-description"
+                                id="resultDescription"
+                            ></p>
+
+
+                            <div class="prediction-box">
+
+                                <span>
+                                    Predicted class
+                                </span>
+
+                                <strong id="predictionValue">
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="result-note">
+
+                                <span class="note-icon">
+                                    i
+                                </span>
+
+                                <p>
+                                    This is a machine-learning prediction.
+                                    It should not be treated as a definitive
+                                    verification of the article or its source.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="copy-button"
+                                id="copyBtn"
+                            >
+                                Copy Result
+                            </button>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+
+                <!-- =========================
+                     STATISTICS
+                ========================== -->
+
+                <section class="stats-strip">
+
+                    <div class="stat">
+
+                        <span
+                            class="stat-value"
+                            id="statWords"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Words
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span
+                            class="stat-value"
+                            id="statCharacters"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Characters
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span
+                            class="stat-value"
+                            id="statTitle"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Title characters
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span class="stat-value">
+                            2
+                        </span>
+
+                        <span class="stat-label">
+                            Input fields
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     HOW IT WORKS
+                ========================== -->
+
+                <section class="how-section">
+
+                    <div class="section-intro">
+
+                        <p class="eyebrow">
+                            PROCESS
+                        </p>
+
+                        <h2>
+                            How the system works
+                        </h2>
+
+                        <p>
+                            The application follows a simple
+                            three-step classification workflow.
+                        </p>
+
+                    </div>
+
+
+                    <div class="steps">
+
+
+                        <article class="step">
+
+                            <span class="step-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Enter news
+                            </h3>
+
+                            <p>
+                                The user provides the headline and
+                                article content.
+                            </p>
+
+                        </article>
+
+
+                        <article class="step">
+
+                            <span class="step-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Process text
+                            </h3>
+
+                            <p>
+                                The saved vectorizer converts the
+                                combined text into features for the model.
+                            </p>
+
+                        </article>
+
+
+                        <article class="step">
+
+                            <span class="step-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Generate prediction
+                            </h3>
+
+                            <p>
+                                The trained classification model returns
+                                the predicted news class.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     FEATURES
+                ========================== -->
+
+                <section class="feature-grid">
+
+
+                    <article class="feature-card">
+
+                        <span class="feature-icon">
+                            ML
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Trained model
+                            </h3>
+
+                            <p>
+                                Uses your saved machine-learning model
+                                for classification.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <span class="feature-icon">
+                            TX
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Text processing
+                            </h3>
+
+                            <p>
+                                Headline and article content are combined
+                                before prediction.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <span class="feature-icon">
+                            API
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Flask backend
+                            </h3>
+
+                            <p>
+                                The interface communicates with your
+                                Flask prediction endpoint.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <span>
+                NewsGuard
+            </span>
+
+            <span>
+                Machine Learning News Classification System
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const form =
+            document.getElementById("newsForm");
+
+        const titleInput =
+            document.getElementById("title");
+
+        const textInput =
+            document.getElementById("text");
+
+        const titleCount =
+            document.getElementById("titleCount");
+
+        const textCount =
+            document.getElementById("textCount");
+
+        const characterCount =
+            document.getElementById("characterCount");
+
+        const readingTime =
+            document.getElementById("readingTime");
+
+        const statWords =
+            document.getElementById("statWords");
+
+        const statCharacters =
+            document.getElementById("statCharacters");
+
+        const statTitle =
+            document.getElementById("statTitle");
+
+        const analyzeBtn =
+            document.getElementById("analyzeBtn");
+
+        const btnText =
+            document.getElementById("btnText");
+
+        const exampleBtn =
+            document.getElementById("exampleBtn");
+
+        const clearBtn =
+            document.getElementById("clearBtn");
+
+        const emptyState =
+            document.getElementById("emptyState");
+
+        const resultSection =
+            document.getElementById("resultSection");
+
+        const resultIcon =
+            document.getElementById("resultIcon");
+
+        const resultTitle =
+            document.getElementById("resultTitle");
+
+        const resultDescription =
+            document.getElementById("resultDescription");
+
+        const predictionValue =
+            document.getElementById("predictionValue");
+
+        const copyBtn =
+            document.getElementById("copyBtn");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+        const errorText =
+            document.getElementById("errorText");
+
+
+        /* =========================
+           WORD COUNT
+        ========================== */
+
+        function getWordCount(text) {
+
+            const cleanText =
+                text.trim();
+
+            if (!cleanText) {
+                return 0;
+            }
+
+            return cleanText.split(/\s+/).length;
+        }
+
+
+        /* =========================
+           UPDATE STATISTICS
+        ========================== */
+
+        function updateStats() {
+
+            const title =
+                titleInput.value;
+
+            const text =
+                textInput.value;
+
+            const words =
+                getWordCount(text);
+
+            const characters =
+                text.length;
+
+
+            titleCount.textContent =
+                `${title.length} / 300`;
+
+            textCount.textContent =
+                `${words} ${words === 1 ? "word" : "words"}`;
+
+            characterCount.textContent =
+                `${characters.toLocaleString()} characters`;
+
+
+            statWords.textContent =
+                words.toLocaleString();
+
+            statCharacters.textContent =
+                characters.toLocaleString();
+
+            statTitle.textContent =
+                title.length;
+
+
+            if (words === 0) {
+
+                readingTime.textContent =
+                    "Less than 1 min read";
+
+            } else {
+
+                const minutes =
+                    Math.max(1, Math.ceil(words / 200));
+
+                readingTime.textContent =
+                    `About ${minutes} min read`;
+            }
+        }
+
+
+        titleInput.addEventListener(
+            "input",
+            updateStats
+        );
+
+        textInput.addEventListener(
+            "input",
+            updateStats
+        );
+
+
+        /* =========================
+           ERROR
+        ========================== */
+
+        function showError(message) {
+
+            errorText.textContent =
+                message;
+
+            errorMessage.classList.add(
+                "show"
+            );
+        }
+
+
+        function hideError() {
+
+            errorMessage.classList.remove(
+                "show"
+            );
+        }
+
+
+        /* =========================
+           RESET RESULT
+        ========================== */
+
+        function resetResult() {
+
+            emptyState.style.display =
+                "flex";
+
+            resultSection.classList.remove(
+                "show"
+            );
+
+            resultSection.classList.remove(
+                "fake-result"
+            );
+
+            resultSection.classList.remove(
+                "real-result"
+            );
+        }
+
+
+        /* =========================
+           CLEAR
+        ========================== */
+
+        function clearForm() {
+
+            titleInput.value = "";
+
+            textInput.value = "";
+
+            hideError();
+
+            resetResult();
+
+            updateStats();
+
+            titleInput.focus();
+        }
+
+
+        clearBtn.addEventListener(
+            "click",
+            clearForm
+        );
+
+
+        /* =========================
+           EXAMPLE
+        ========================== */
+
+        exampleBtn.addEventListener(
+            "click",
+            function () {
+
+                titleInput.value =
+                    "Scientists Discover That Drinking Hot Water Can Cure Every Disease";
+
+
+                textInput.value =
+                    "A report circulating online claims that a group of scientists " +
+                    "has discovered that drinking hot water several times a day can " +
+                    "completely cure every known disease. The article claims that " +
+                    "the treatment can eliminate serious illnesses without medication. " +
+                    "However, it does not provide the names of the researchers, the " +
+                    "research institution, or a published scientific study supporting " +
+                    "the claim.";
+
+
+                hideError();
+
+                resetResult();
+
+                updateStats();
+
+                titleInput.focus();
+            }
+        );
+
+
+        /* =========================
+           SUBMIT
+        ========================== */
+
+        form.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                hideError();
+
+
+                const title =
+                    titleInput.value.trim();
+
+                const text =
+                    textInput.value.trim();
+
+
+                if (!title || !text) {
+
+                    showError(
+                        "Please enter both the news headline and article content."
+                    );
+
+                    return;
+                }
+
+
+                if (text.length < 30) {
+
+                    showError(
+                        "Please provide more article content for analysis."
+                    );
+
+                    return;
+                }
+
+
+                analyzeBtn.disabled =
+                    true;
+
+                btnText.innerHTML =
+                    '<span class="spinner"></span> Analyzing';
+
+
+                emptyState.style.display =
+                    "none";
+
+                resultSection.classList.remove(
+                    "show"
+                );
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/predict",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    title: title,
+                                    text: text
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.error ||
+                            "The server could not complete the analysis."
+                        );
+                    }
+
+
+                    displayResult(
+                        data.prediction
+                    );
+
+
+                } catch (error) {
+
+                    emptyState.style.display =
+                        "flex";
+
+                    showError(
+                        error.message ||
+                        "Unable to connect to the Flask server."
+                    );
+
+
+                } finally {
+
+                    analyzeBtn.disabled =
+                        false;
+
+                    btnText.textContent =
+                        "Analyze Article";
+                }
+
+            }
+        );
+
+
+        /* =========================
+           DISPLAY RESULT
+        ========================== */
+
+        function displayResult(prediction) {
+
+            const value =
+                String(prediction).trim();
+
+            const normalized =
+                value.toLowerCase();
+
+
+            const isFake =
+                normalized.includes("fake") ||
+                normalized.includes("false") ||
+                normalized === "0";
+
+
+            const isReal =
+                normalized.includes("real") ||
+                normalized.includes("true") ||
+                normalized === "1";
+
+
+            predictionValue.textContent =
+                value;
+
+
+            resultSection.classList.remove(
+                "fake-result"
+            );
+
+            resultSection.classList.remove(
+                "real-result"
+            );
+
+
+            if (isFake) {
+
+                resultSection.classList.add(
+                    "fake-result"
+                );
+
+                resultIcon.textContent =
+                    "!";
+
+                resultTitle.textContent =
+                    "Potentially Fake News";
+
+                resultDescription.textContent =
+                    "The trained classification model returned a fake or misleading news prediction.";
+
+            }
+
+
+            else if (isReal) {
+
+                resultSection.classList.add(
+                    "real-result"
+                );
+
+                resultIcon.textContent =
+                    "✓";
+
+                resultTitle.textContent =
+                    "Likely Real News";
+
+                resultDescription.textContent =
+                    "The trained classification model returned a real news prediction.";
+
+            }
+
+
+            else {
+
+                resultIcon.textContent =
+                    "?";
+
+                resultTitle.textContent =
+                    "Model Prediction";
+
+                resultDescription.textContent =
+                    "The model returned the class shown below.";
+            }
+
+
+            resultSection.classList.add(
+                "show"
+            );
+
+
+            resultSection.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+
+
+        /* =========================
+           COPY RESULT
+        ========================== */
+
+        copyBtn.addEventListener(
+            "click",
+            async function () {
+
+                const resultText =
+                    `NewsGuard Analysis\n` +
+                    `Prediction: ${predictionValue.textContent}\n` +
+                    `Result: ${resultTitle.textContent}`;
+
+
+                try {
+
+                    await navigator.clipboard.writeText(
+                        resultText
+                    );
+
+
+                    const oldText =
+                        copyBtn.textContent;
+
+                    copyBtn.textContent =
+                        "Copied";
+
+
+                    setTimeout(
+                        function () {
+
+                            copyBtn.textContent =
+                                oldText;
+
+                        },
+                        1500
+                    );
+
+
+                } catch (error) {
+
+                    copyBtn.textContent =
+                        "Copy unavailable";
+
+
+                    setTimeout(
+                        function () {
+
+                            copyBtn.textContent =
+                                "Copy Result";
+
+                        },
+                        1500
+                    );
+                }
+            }
+        );
+
+
+        
+
+        updateStats();
+
+    </script>
+
+</body>
+
+</html>
