@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Top 50 — The Reading Room{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="hero">
+    <p class="hero__eyebrow">The Reading Room</p>
+    <h1>50 Unforgettable Stories Worth Re-Reading</h1>
+<p>Ordered by reader love and review scores. Tell us your favorite on the following screen, and we'll curate a custom shelf of five similar gems.</p>
+  </div>
+
+  <div class="catalog-grid">
+    {% for i in range(book_name|length) %}
+    <article class="catalog-card">
+      <p class="catalog-card__rank">No. {{ '%03d' % (i + 1) }}</p>
+    <img class="catalog-card__cover" 
+     src="https://covers.openlibrary.org/b/isbn/{{ image[i].split('/P/')[1].split('.')[0] }}-M.jpg" 
+     alt="Cover of {{ book_name[i] }}" 
+     loading="lazy"
+     onerror="this.onerror=null; this.src='https://placehold.co/300x450/0f172a/cbd5e1?text=No+Cover';">
+      <h2 class="catalog-card__title">{{ book_name[i] }}</h2>
+      <p class="catalog-card__author">{{ author[i] }}</p>
+      <div class="catalog-card__footer">
+        <span class="catalog-card__votes">{{ '{:,}'.format(votes[i]) }} ratings</span>
+        <span class="stamp">{{ '%.1f' % rating[i] }}</span>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
