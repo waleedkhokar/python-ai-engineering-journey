@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Find similar books — The Reading Room{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="hero">
+    <p class="hero__eyebrow">Catalog search</p>
+    <h1>Tell us a book you loved</h1>
+    <p>We'll find five more titles that readers with similar taste also rated highly.</p>
+  </div>
+
+  <div class="search-slip">
+    <label class="search-slip__label" for="user_input">Book title</label>
+    <form action="{{ url_for('recommend') }}" method="POST">
+      <input
+        type="text"
+        id="user_input"
+        name="user_input"
+        list="title-options"
+        placeholder="e.g. The Da Vinci Code"
+        value="{{ query or '' }}"
+        autocomplete="off"
+        required>
+      <datalist id="title-options">
+        {% for title in all_titles %}
+        <option value="{{ title }}">
+        {% endfor %}
+      </datalist>
+      <button type="submit">Find similar books</button>
+    </form>
+  </div>
+
+  {% if error %}
+  <p class="error-note">{{ error }}</p>
+  {% endif %}
+
+  {% if data %}
+  <h2 class="shelf-heading">Readers who liked "{{ query }}" also enjoyed <span>{{ data|length }} results</span></h2>
+  <div class="catalog-grid">
+    {% for book in data %}
+    <article class="catalog-card">
+      <img class="catalog-card__cover" src="{{book[2]}}"" alt="Cover of {{ book.title }}" loading="lazy">
+      <h2 class="catalog-card__title">{{ book[0] }}</h2>
+      <p class="catalog-card__author">{{ book[1] }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% elif not error %}
+  <div class="empty-state">Search for a title above to see what's shelved next to it.</div>
+  {% endif %}
+</div>
+{% endblock %}
