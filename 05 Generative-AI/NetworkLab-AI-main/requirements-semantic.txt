@@ -1,2 +1,0 @@
--r requirements.txt
-sentence-transformers>=3.0
